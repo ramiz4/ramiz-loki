@@ -1,0 +1,44 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:10
+
+pipelines:
+  default:
+    - step:
+        name: Install, build, deploy
+        caches:
+          - node
+        script:
+          - npm install
+          - npm run build -- --prod
+        artifacts:
+          - dist/**
+    - step:
+        name: Deploy to test
+        deployment: test
+        script:
+          - apt-get update
+          - apt-get install ncftp
+          - ncftpput -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" -R $FTP_HOST /webseiten/test dist/.
+          - echo Finished uploading /dist files to $FTP_HOST/webseiten/test
+    - step:
+        name: Deploy to staging
+        deployment: staging
+        #trigger: manual
+        script:
+          - apt-get update
+          - apt-get install ncftp
+          - ncftpput -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" -R $FTP_HOST /webseiten/staging dist/.
+          - echo Finished uploading /dist files to $FTP_HOST/webseiten/staging
+    - step:
+        name: Deploy to production
+        deployment: production
+        #trigger: manual
+        script:
+          - apt-get update
+          - apt-get install ncftp
+          - ncftpput -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" -R $FTP_HOST /webseiten/production dist/.
+          - echo Finished uploading /dist files to $FTP_HOST/webseiten/production

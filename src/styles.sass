@@ -1,0 +1,42 @@
+@import "~bootstrap/scss/bootstrap"
+
+$fa-font-path: "~font-awesome/fonts"
+@import "~font-awesome/scss/font-awesome"
+
+html
+  height: 100vh
+
+body
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  background-color: #253a35
+
+::selection, ::-moz-selection
+  background: #28a745
+  color: white
+
+.bg-primary
+  background-color: #444 !important
+
+nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    background: transparent !important
+
+nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark.scrolled-top
+  background: rgba(0,0,0,0.8) !important
+
+.footer
+  background-color: #253a35
+  .nav-link
+    color: #f8f9fa
+
+.social-wrapper .btn-sm
+    padding: 0.25rem 0.6rem
+
+.headline
+  border-bottom: 1px solid #aaa
+  h1
+    border-bottom: 4px solid #28a745
+    padding-bottom: 5px
+    margin-bottom: -1px
+    width: fit-content
