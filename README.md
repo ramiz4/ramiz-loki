@@ -1,27 +1,27 @@
-# ramizloki
+# Ramiz Loki - Software Engineer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+Welcome to my personal website repository! I'm Ramiz Loki, a passionate and experienced software engineer dedicated to crafting innovative solutions and building robust software applications. This README.md file serves as an introduction to my personal website, where you can learn more about my skills to the world of technology.
 
-## Development server
+## About Me
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Greetings! I'm an accomplished Senior Full-Stack Software Engineer with a wealth of experience in the dynamic world of software development. Currently, I serve as a Senior Full-Stack Software Engineer at Base-Net Informatik AG in Sursee, where I contribute my expertise to the evolution of cutting-edge solutions. Prior to this, I held a similar role at Schüco Digital GmbH (Schüco International KG) in Bielefeld for an extended period.
+I'm passionate about pushing the boundaries of technology and solving complex problems. 
 
-## Code scaffolding
+## Skills
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Programming Languages:** C#, TypeScript, Python, PHP
+- **Web Technologies:** HTML5, CSS3, Angular, Node.js, REST, HTTP, JSON
+- **Databases:** MsSQL, MySQL, MongoDB
+- **Tools & Platforms:** Git, Docker, Azure
+- **Methodologies:** Agile, Scrum
 
-## Build
+## Contact
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+I love connecting with fellow developers, tech enthusiasts, and potential collaborators. Feel free to reach out to me through:
 
-## Running unit tests
+- Email: me@ramizloki.com
+- LinkedIn: [John Doe on LinkedIn](https://www.linkedin.com/in/ramizloki/)
+- Twitter: [@JohnDoeDev](https://twitter.com/ramizloki)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Thank you for visiting my personal website! Feel free to explore the different sections and get in touch if you have any questions or collaboration ideas. Happy coding! 🚀
