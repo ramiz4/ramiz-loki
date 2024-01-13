@@ -13,9 +13,8 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    db.PageDetail.load('33580710-91c8-4032-9201-34ee387b4dbe').then((page: any) => {
+    db['PageDetail'].load('33580710-91c8-4032-9201-34ee387b4dbe').then((page: any) => {
       this.page = page;
     });
   }
-
 }

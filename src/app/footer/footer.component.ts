@@ -1,28 +1,31 @@
+import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { db } from 'baqend';
 
 @Component({
   selector: 'app-footer',
+  standalone: true,
+  imports: [NgFor],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent implements OnInit {
 
-  pages: Array<any>;
-  socialLinks: Array<any>;
+  pages: Array<any> = [];
+  socialLinks: Array<any> = [];
 
   constructor() { }
 
   ngOnInit() {
     db.ready().then(() => {
-      db.Page.find()
+      db['Page'].find()
         .equal('homepage', null)
         .equal('published', true)
         .ascending('position')
         .resultList((pages: any) => {
           this.pages = pages;
         });
-      db.SocialLink.find()
+      db['SocialLink'].find()
         .equal('published', true)
         .ascending('position')
         .resultList((socialLinks: any) => {
@@ -30,5 +33,4 @@ export class FooterComponent implements OnInit {
         });
     });
   }
-
 }

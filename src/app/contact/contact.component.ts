@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    db.PageDetail.load('ddae24db-92f7-45be-bd7e-fa3a337a26f3').then((page: any) => {
+    db['PageDetail'].load('ddae24db-92f7-45be-bd7e-fa3a337a26f3').then((page: any) => {
       this.page = page;
     });
   }
