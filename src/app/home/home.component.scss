@@ -1,0 +1,101 @@
+$gutter: 30px;
+$border-width: 4px;
+$dot-diameter: 15px;
+
+.content-header {
+  background: url(../../assets/images/header-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #fff;
+  padding: 41vh 9vw 0;
+}
+.timeline {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: calc(33% + 6px);
+    bottom: 0px;
+    width: $border-width;
+    background: #ddd;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+.entry {
+  clear: both;
+  text-align: left;
+  position: relative;
+  .title {
+    margin-bottom: 0.5em;
+    float: left;
+    width: 33%;
+    padding-right: $gutter;
+    text-align: right;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      width: $dot-diameter;
+      height: $dot-diameter;
+      border: $border-width solid #28a745;
+      background-color: #fff;
+      border-radius: 100%;
+      top: 15%;
+      right: -$dot-diameter;
+      z-index: 99;
+    }
+    h3 {
+      margin: 0;
+      font-size: 120%;
+    }
+    p {
+      margin: 0;
+      font-size: 100%;
+    }
+  }
+  .timeline-body {
+    margin: 0 0 3em;
+    float: right;
+    width: 66%;
+    padding-left: $gutter;
+    p {
+      line-height: 1.4em;
+      &:first-child {
+        margin-top: 0;
+        font-weight: 400;
+      }
+    }
+    ul {
+      color: #666;
+      padding-left: 17px;
+      list-style-type: square;
+    }
+  }
+}
+.skills-wrapper .badge {
+  padding: 0.252em 0.4em;
+  font-size: 87%;
+  font-weight: 100;
+}
+span.devicon {
+  font-size: 3rem;
+  color: #666;
+  display: inline-block;
+  width: 72px;
+}
+.display-1 {
+  font-size: 5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.display-4 {
+  font-size: 1.6rem;
+  font-weight: 200;
+  line-height: 1.2;
+}

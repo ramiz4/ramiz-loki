@@ -1,18 +1,16 @@
 <footer class="footer">
   <div class="container pt-5 pb-5">
     <div class="row">
-      <!-- <div class="col-sm-7">
-        <nav class="nav">
-          <a class="nav-link" routerLink="/">
-            RL <i class="fa fa-terminal"></i>
-          </a>
-          <a class="nav-link" *ngFor="let page of pages" [routerLink]="page.href">{{page.name}}</a>
-        </nav>
-      </div> -->
       <div class="social-wrapper col-sm-12 text-right">
-        <a class="btn btn-light rounded-circle ml-2" *ngFor="let socialLink of socialLinks" [href]="socialLink.href"
-          target="_blank" [title]="socialLink.title" rel="noopener">
-          <i class="fa fa-{{socialLink.faName}}"></i>
+        <a
+          class="btn btn-light rounded-circle ml-2"
+          *ngFor="let socialLink of socialLinks"
+          [href]="socialLink.href"
+          target="_blank"
+          [title]="socialLink.title"
+          rel="noopener"
+        >
+          <i class="fa fa-{{ socialLink.faName }}"></i>
         </a>
       </div>
     </div>

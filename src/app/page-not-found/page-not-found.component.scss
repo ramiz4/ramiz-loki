@@ -1,0 +1,17 @@
+.content-header {
+  background: url(../../assets/images/header-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+
+h1,
+h2 {
+  background: white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,39 +1,21 @@
 import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { db } from 'baqend';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [NgFor, NgbTooltipModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  private data = inject(DataService);
 
-  socialLinks: Array<any> = [];
-  skills: Array<any> = [];
-  workExperiences: Array<any> = [];
+  socialLinks = this.data.getSocialLinks();
 
-  constructor() { }
+  skills = this.data.getSkills();
 
-  ngOnInit(): void {
-    db['SocialLink'].find()
-      .equal('published', true)
-      .ascending('position')
-      .resultList((socialLinks: any) => {
-        this.socialLinks = socialLinks;
-      });
-
-    db['Skill'].find()
-      .ascending('name')
-      .resultList((skills: any) => {
-        this.skills = skills;
-      });
-
-    db['WorkExperience'].find().resultList({ depth: 1 }, (workExperiences: any) => {
-      this.workExperiences = workExperiences;
-    });
-  }
+  workExperiences = this.data.getWorkExperience();
 }

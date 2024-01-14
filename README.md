@@ -5,7 +5,7 @@ Welcome to my personal website repository! I'm Ramiz Loki, a passionate and expe
 ## About Me
 
 Greetings! I'm an accomplished Senior Full-Stack Software Engineer with a wealth of experience in the dynamic world of software development. Currently, I serve as a Senior Full-Stack Software Engineer at Base-Net Informatik AG in Sursee, where I contribute my expertise to the evolution of cutting-edge solutions. Prior to this, I held a similar role at Schüco Digital GmbH (Schüco International KG) in Bielefeld for an extended period.
-I'm passionate about pushing the boundaries of technology and solving complex problems. 
+I'm passionate about pushing the boundaries of technology and solving complex problems.
 
 ## Skills
 
@@ -22,6 +22,5 @@ I love connecting with fellow developers, tech enthusiasts, and potential collab
 - Email: me@ramizloki.com
 - LinkedIn: [John Doe on LinkedIn](https://www.linkedin.com/in/ramizloki/)
 - Twitter: [@JohnDoeDev](https://twitter.com/ramizloki)
-
 
 Thank you for visiting my personal website! Feel free to explore the different sections and get in touch if you have any questions or collaboration ideas. Happy coding! 🚀
