@@ -1,0 +1,70 @@
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.language-icon {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+}
+
+.shine-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shine 2s infinite;
+}
+
+.language-card {
+  backdrop-filter: blur(8px);
+  background-color: rgba(26, 26, 26, 0.8);
+  border-radius: 0.75rem;
+  border: 1px solid #333;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.language-card-animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.language-card-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.language-progress-bg {
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.language-progress-bar {
+  height: 100%;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.1, 0.7, 0.1, 1) 0.2s;
+}
+
+.language-progress-bar.in-view {
+  width: var(--progress-width);
+}
+
+.language-decoration-dot {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+}

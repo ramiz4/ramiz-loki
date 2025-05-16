@@ -1,0 +1,174 @@
+/* About section fancy effects */
+.about-card-hover {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.about-card-hover:hover::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, #00ff9d, #00cc7d, #333);
+  border-radius: 1rem;
+  z-index: -2;
+  filter: blur(8px);
+  opacity: 0.7;
+  animation: rotateBorder 3s linear infinite;
+}
+
+.about-card-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  z-index: -1;
+}
+
+.about-card {
+  background: linear-gradient(
+    to bottom right,
+    rgba(42, 42, 42, 0.8),
+    rgba(26, 26, 26, 0.9)
+  );
+  border-radius: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  overflow: hidden;
+  width: 100%; /* Ensure card takes full width of its container */
+}
+
+.about-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.about-card-animate {
+  position: relative;
+}
+
+.about-card-animate::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, var(--card-color, #00ff9d), transparent);
+  border-radius: 1rem;
+  z-index: -2;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.about-card:hover .about-card-animate::before {
+  opacity: 0.5;
+  animation: rotateBorder 3s linear infinite;
+}
+
+.about-decoration-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+@keyframes rotateBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Remove the floating animation from icons */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Overriding the floating animation */
+.icon-float {
+  animation: none; /* Remove the floating animation */
+}
+
+/* Particle effect for the about section */
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(0, 255, 157, 0.3);
+  pointer-events: none;
+}
+
+.particle-1 {
+  top: 10%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite;
+}
+.particle-2 {
+  top: 20%;
+  left: 80%;
+  animation: float 12s ease-in-out infinite;
+}
+.particle-3 {
+  top: 60%;
+  left: 15%;
+  animation: float 10s ease-in-out infinite;
+}
+.particle-4 {
+  top: 80%;
+  left: 70%;
+  animation: float 9s ease-in-out infinite;
+}
+.particle-5 {
+  top: 40%;
+  left: 90%;
+  animation: float 11s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(50px, 25px);
+  }
+  50% {
+    transform: translate(0, 50px);
+  }
+  75% {
+    transform: translate(-50px, 25px);
+  }
+}
+
+/* Add pulse animation for background highlights */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
