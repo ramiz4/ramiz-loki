@@ -8,7 +8,6 @@
   },
   "packageManager": "pnpm@8.0.0 || >=8.0.0",
   "scripts": {
-    "preinstall": "node preinstall.js",
     "dev": "pnpm vite",
     "build": "pnpm vite build",
     "lint": "pnpm eslint . --ext .js,.jsx,.ts,.tsx --fix",
