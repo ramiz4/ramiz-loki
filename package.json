@@ -1,8 +1,8 @@
-{
-  "name": "ramizloki-redesign",
+{  "name": "ramizloki-redesign",
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "homepage": "https://ramiz4.github.io/ramiz-loki",
   "scripts": {
     "dev": "npx vite",
     "build": "npx vite build",
@@ -12,7 +12,9 @@
     "preview": "npx vite preview",
     "test": "cross-env NODE_OPTIONS=--no-deprecation jest",
     "test:watch": "cross-env NODE_OPTIONS=--no-deprecation jest --watch",
-    "test:coverage": "cross-env NODE_OPTIONS=--no-deprecation jest --coverage"
+    "test:coverage": "cross-env NODE_OPTIONS=--no-deprecation jest --coverage",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^12.7.0",
@@ -42,6 +44,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "gh-pages": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
     "intersection-observer": "^0.12.2",
     "jest": "^29.7.0",

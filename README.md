@@ -53,6 +53,7 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 - `npm run test` - Run all tests
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:coverage` - Run tests with coverage report
+- `npm run deploy` - Deploy to GitHub Pages
 
 ## 💻 Technologies Used
 
