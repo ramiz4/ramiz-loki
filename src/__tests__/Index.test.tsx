@@ -62,24 +62,20 @@ describe('Index / Entry point', () => {
     const mockRoot = (createRoot as jest.Mock).mock.results[0].value;
     expect(mockRoot.render).toHaveBeenCalledWith(expect.any(Object));
   });
+  
+  test('throws error when root element is not found', () => {
+    // Mock getElementById to return null
+    const originalGetElementById = document.getElementById;
+    document.getElementById = jest.fn().mockReturnValue(null);
 
-  test('throws error when root element is not found', async () => {
-    // Remove root element to trigger error
-    const root = document.getElementById('root');
-    if (root) {
-      document.body.removeChild(root);
-    }
+    // The error should be thrown when we require the module
+    expect(() => {
+      jest.isolateModules(() => {
+        require('../index');
+      });
+    }).toThrow('Root element not found');
 
-    let error: Error | null = null;
-
-    import('../index').catch(e => {
-      // This code will be reached if the import fails
-      // but we want to handle the error in the test
-      error = e as Error;
-
-      // Check that we caught the expected error
-      expect(error).not.toBeNull();
-      expect(error?.message).toBe('Root element not found');
-    });
+    // Restore the original implementation
+    document.getElementById = originalGetElementById;
   });
 });
