@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-
+import { act, render, screen } from '@testing-library/react';
 import { Experience } from '../components/Experience';
 
 describe('Experience', () => {
@@ -127,5 +126,74 @@ describe('Experience', () => {
     // Find the experience section
     const experienceSection = container.querySelector('#experience');
     expect(experienceSection).toBeInTheDocument();
+  });
+
+  test('triggers animation when element intersects', () => {
+    // Mock implementation with callback capture
+    let intersectionCallback: IntersectionObserverCallback;
+    const observeMock = jest.fn();
+    const unobserveMock = jest.fn();
+
+    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+      intersectionCallback = callback;
+      return {
+        observe: observeMock,
+        unobserve: unobserveMock,
+        disconnect: jest.fn(),
+      };
+    });
+
+    const { container } = render(<Experience />);
+
+    // Verify observer was initialized with correct threshold
+    expect(window.IntersectionObserver).toHaveBeenCalledWith(
+      expect.any(Function),
+      { threshold: 0.2 }
+    );
+
+    // Simulate intersection event (element comes into view)
+    act(() => {
+      intersectionCallback([
+        {
+          isIntersecting: true,
+          target: container.querySelector('#experience') as Element,
+        } as IntersectionObserverEntry,
+      ], {} as IntersectionObserver);
+    });
+
+    // Check if animations are applied based on the isInView state being true
+    // Animation elements like the timeline center line should no longer have opacity-0
+    const timelineCenterLine = container.querySelector('.lg\\:block.relative > div');
+    expect(timelineCenterLine).toHaveClass('opacity-100');
+    expect(timelineCenterLine).not.toHaveClass('opacity-0');
+  });
+
+  test('cleans up intersection observer on unmount', () => {
+    const observeMock = jest.fn();
+    const unobserveMock = jest.fn();
+
+    window.IntersectionObserver = jest.fn().mockImplementation(() => {
+      return {
+        observe: observeMock,
+        unobserve: unobserveMock,
+        disconnect: jest.fn(),
+      };
+    });
+
+    const { unmount } = render(<Experience />);
+
+    // Unmount the component
+    unmount();
+
+    // Verify unobserve was called during cleanup
+    expect(unobserveMock).toHaveBeenCalled();
+  });
+
+  test('renders message for current job with no details', () => {
+    render(<Experience />);
+
+    expect(
+      screen.getAllByText('Currently working in this position. More details to come...')[0]
+    ).toBeInTheDocument();
   });
 });
