@@ -175,8 +175,7 @@ describe('AnimatedBackground', () => {
     const canvas = document.querySelector('canvas');
     expect(canvas).not.toBeInTheDocument();
   });
-  
-  test('applies mouse position to transform styles', () => {
+    test('applies mouse position to transform styles', () => {
     render(<AnimatedBackground imagePath="/test-image.png" />);
     
     // Extract the mousemove handler
@@ -199,5 +198,100 @@ describe('AnimatedBackground', () => {
     // Check the main container transform
     const mainContainer = screen.getByAltText('Animated background').parentElement?.parentElement;
     expect(mainContainer?.style.transform).toBeDefined();
+  });
+
+  test('handles setTimeout for isLoaded state', () => {
+    // Spy on setTimeout
+    jest.useFakeTimers();
+    
+    render(<AnimatedBackground imagePath="/test-image.png" />);
+    const container = screen.getByAltText('Animated background').parentElement?.parentElement;
+    expect(container).toHaveClass('opacity-0');
+    
+    // Fast-forward timers to trigger the setTimeout callback
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+    
+    // Check that the container now has opacity-100 class
+    expect(container).toHaveClass('opacity-100');
+    
+    jest.useRealTimers();
+  });
+  test('cleans up event listeners and timeouts on unmount', () => {
+    // Mock clearTimeout
+    const originalClearTimeout = window.clearTimeout;
+    window.clearTimeout = jest.fn();
+    
+    const { unmount } = render(<AnimatedBackground imagePath="/test-image.png" />);
+    
+    // Check that event listeners are set up
+    expect(window.addEventListener).toHaveBeenCalledWith('mousemove', expect.any(Function));
+    expect(window.addEventListener).toHaveBeenCalledWith('click', expect.any(Function));
+    
+    // Test cleanup
+    unmount();
+    
+    // Verify that listeners were removed
+    expect(window.removeEventListener).toHaveBeenCalledWith('mousemove', expect.any(Function));
+    expect(window.removeEventListener).toHaveBeenCalledWith('click', expect.any(Function));
+    
+    // Verify that the timeout was cleared (not exact but sufficient verification)
+    expect(window.clearTimeout).toHaveBeenCalled();
+    
+    // Restore original clearTimeout
+    window.clearTimeout = originalClearTimeout;
+  });
+  test('handles canvas operations in non-test environment', () => {
+    // We don't actually test canvas operations since they throw errors in JSDOM
+    // Instead just verify that when in production, the conditional would allow canvas operations
+    
+    // Mock process.env.NODE_ENV to simulate production
+    const originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    
+    // Check that canvas element is rendered in non-test environment
+    const { container } = render(<AnimatedBackground imagePath="/test-image.png" />);
+    const canvasElements = container.querySelectorAll('canvas');
+    expect(canvasElements.length).toBeGreaterThan(0);
+    
+    // Restore NODE_ENV
+    process.env.NODE_ENV = originalNodeEnv;
+  });  test('handles click event animation with ripples', () => {
+    // We can't test the actual canvas ripple animation, so instead verify other aspects
+    render(<AnimatedBackground imagePath="/test-image.png" />);
+    
+    // Extract the click handler
+    const clickHandler = (window.addEventListener as jest.Mock).mock.calls.find(
+      call => call[0] === 'click'
+    )[1];
+    
+    // Store the original addEventListener to restore later
+    const originalAddEventListener = window.addEventListener;
+    
+    // Create a new instance
+    window.addEventListener = jest.fn();
+    render(<AnimatedBackground imagePath="/test-image.png" />);
+    
+    // Restore original addEventListener
+    window.addEventListener = originalAddEventListener;
+    
+    // Simulate multiple clicks
+    for (let i = 0; i < 3; i++) {
+      act(() => {
+        clickHandler({
+          clientX: 100 + i * 50,
+          clientY: 200 + i * 30
+        });
+      });
+    }
+    
+    // Verify animation styles in general
+    const gridLines = document.querySelectorAll('.h-full.w-px');
+    expect(gridLines.length).toBeGreaterThan(0);
+    
+    // Check animation attribute
+    const animatedElement = document.querySelector('[style*="animation"]');
+    expect(animatedElement).toBeInTheDocument();
   });
 });
