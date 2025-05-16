@@ -1,5 +1,5 @@
-{  "name": "ramizloki-redesign",
-  "version": "0.0.1",
+{  "name": "ramiz-loki",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "homepage": "https://ramiz4.github.io/ramiz-loki",
@@ -13,7 +13,7 @@
     "test": "cross-env NODE_OPTIONS=--no-deprecation jest",
     "test:watch": "cross-env NODE_OPTIONS=--no-deprecation jest --watch",
     "test:coverage": "cross-env NODE_OPTIONS=--no-deprecation jest --coverage",
-    "predeploy": "npm run build",
+    "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
