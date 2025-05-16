@@ -41,7 +41,7 @@ jest.mock('react-router-dom', () => ({
   HashRouter: ({ children }: { children: ReactNode }) => (
     <div data-testid="hash-router-mock">{children}</div>
   ),
-  useLocation: () => ({ hash: '#test' }),
+  useLocation: jest.fn().mockReturnValue({ hash: '#test' }),
 }));
 
 describe('App', () => {
@@ -100,6 +100,10 @@ describe('App', () => {
   test('scrolls to section when location hash is present', () => {
     jest.useFakeTimers();
 
+    // Mock useLocation to return a hash
+    const useLocationMock = require('react-router-dom').useLocation;
+    useLocationMock.mockReturnValue({ hash: '#test' });
+
     render(<App />);
 
     // Advance timers to trigger the useEffect in ScrollToSection
@@ -112,6 +116,80 @@ describe('App', () => {
         behavior: 'smooth',
       }),
     );
+
+    jest.useRealTimers();
+  });
+
+  test('scrolls to top when no location hash is present', () => {
+    jest.useFakeTimers();
+
+    // Mock useLocation to return an empty hash
+    const useLocationMock = require('react-router-dom').useLocation;
+    useLocationMock.mockReturnValue({ hash: '' });
+
+    render(<App />);
+
+    // Advance timers to trigger the useEffect in ScrollToSection
+    jest.advanceTimersByTime(100);
+
+    // Verify window.scrollTo was called with top: 0
+    expect(window.scrollTo).toHaveBeenCalled();
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    jest.useRealTimers();
+  });
+
+  test('scrolls to section when nav element is not found', () => {
+    jest.useFakeTimers();
+
+    // Mock useLocation to return a hash
+    const useLocationMock = require('react-router-dom').useLocation;
+    useLocationMock.mockReturnValue({ hash: '#test' });
+
+    // Mock document.getElementById
+    jest
+      .spyOn(document, 'getElementById')
+      .mockImplementation(() => document.createElement('div'));
+
+    // Mock document.querySelector to return null for 'nav'
+    jest.spyOn(document, 'querySelector').mockImplementation(() => null);
+
+    render(<App />);
+
+    // Advance timers to trigger the useEffect in ScrollToSection
+    jest.advanceTimersByTime(100);
+
+    // Verify window.scrollTo was called with the correct parameters
+    // In this case, navHeight should be 0
+    expect(window.scrollTo).toHaveBeenCalled();
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: expect.any(Number),
+      behavior: 'smooth',
+    });
+
+    jest.useRealTimers();
+  });
+
+  test('handles case when element with hash id is not found', () => {
+    jest.useFakeTimers();
+
+    // Mock useLocation to return a hash
+    const useLocationMock = require('react-router-dom').useLocation;
+    useLocationMock.mockReturnValue({ hash: '#nonexistent' });
+
+    // Mock document.getElementById to return null
+    jest.spyOn(document, 'getElementById').mockImplementation(() => null);
+
+    render(<App />);
+
+    // Advance timers to trigger the useEffect in ScrollToSection
+    jest.advanceTimersByTime(100);
+
+    // window.scrollTo should not be called if element is not found
+    expect(window.scrollTo).not.toHaveBeenCalled();
 
     jest.useRealTimers();
   });
