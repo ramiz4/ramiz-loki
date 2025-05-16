@@ -14,8 +14,7 @@ interface Particle {
   maxLife: number;
 }
 
-export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [mouseSpeed, setMouseSpeed] = useState(0);
   const [clickRipples, setClickRipples] = useState<
@@ -26,8 +25,25 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>(0);
 
-  const hue = (mousePosition.x + 50) % 30;
-  const colorShift = `hsla(${130 + hue}, 100%, 50%, 0.05)`;
+  // Calculate color shift based on current mousePosition for rendering
+  const colorShift = `hsla(${130 + ((mousePosition.x + 50) % 30)}, 100%, 50%, 0.05)`;
+
+  const addParticles = useCallback((x: number, y: number, count: number) => {
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 2 + 1;
+
+      particlesRef.current.push({
+        x,
+        y,
+        size: Math.random() * 3 + 1,
+        speedX: Math.cos(angle) * speed,
+        speedY: Math.sin(angle) * speed,
+        life: Math.random() * 40 + 20,
+        maxLife: 60,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,13 +81,11 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
 
     const timer = setTimeout(() => setIsLoaded(true), 500);
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+    return () => {      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleMouseClick);
       clearTimeout(timer);
     };
-  }, []);
-
+  }, [addParticles]);
   useEffect(() => {
     // Skip canvas operations when running in test environment
     if (process.env.NODE_ENV === 'test') return;
@@ -99,8 +113,9 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         particle.life--;
 
         const opacity = (particle.life / particle.maxLife) * 0.7;
+        const currentHue = (lastMousePos.current.x + 50) % 30;
 
-        ctx.fillStyle = `hsla(${145 + hue}, 100%, 70%, ${opacity})`;
+        ctx.fillStyle = `hsla(${145 + currentHue}, 100%, 70%, ${opacity})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
@@ -111,6 +126,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
       });
 
       const glowRadius = 100 + mouseSpeed * 5;
+      const currentHue = (lastMousePos.current.x + 50) % 30;
       const gradient = ctx.createRadialGradient(
         lastMousePos.current.x,
         lastMousePos.current.y,
@@ -119,7 +135,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         lastMousePos.current.y,
         glowRadius,
       );
-      gradient.addColorStop(0, `hsla(${145 + hue}, 100%, 50%, 0.3)`);
+      gradient.addColorStop(0, `hsla(${145 + currentHue}, 100%, 50%, 0.3)`);
       gradient.addColorStop(1, 'transparent');
 
       ctx.fillStyle = gradient;
@@ -130,21 +146,25 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         glowRadius,
         0,
         Math.PI * 2,
-      );
-      ctx.fill();
+      );      ctx.fill();
 
-      setClickRipples(prev =>
-        prev
-          .map(ripple => ({
-            ...ripple,
-            size: ripple.size + 10,
-            opacity: ripple.opacity - 0.02,
-          }))
-          .filter(ripple => ripple.opacity > 0),
-      );
+      // Handle clickRipples updates with refs to avoid unnecessary state updates during animation
+      const updatedRipples = clickRipples
+        .map(ripple => ({
+          ...ripple,
+          size: ripple.size + 10,
+          opacity: ripple.opacity - 0.02,
+        }))
+        .filter(ripple => ripple.opacity > 0);
+      
+      // Only update state if the array actually changed and not on every frame
+      if (JSON.stringify(updatedRipples) !== JSON.stringify(clickRipples)) {
+        setClickRipples(updatedRipples);
+      }
 
-      clickRipples.forEach(ripple => {
-        ctx.strokeStyle = `hsla(${145 + hue}, 100%, 70%, ${ripple.opacity})`;
+      // Use the updated ripples for rendering in this frame
+      updatedRipples.forEach(ripple => {
+        ctx.strokeStyle = `hsla(${145 + currentHue}, 100%, 70%, ${ripple.opacity})`;
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(ripple.x, ripple.y, ripple.size, 0, Math.PI * 2);
@@ -159,25 +179,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameRef.current);
-    };
-  }, [hue, clickRipples]);
-
-  const addParticles = useCallback((x: number, y: number, count: number) => {
-    for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 2 + 1;
-
-      particlesRef.current.push({
-        x,
-        y,
-        size: Math.random() * 3 + 1,
-        speedX: Math.cos(angle) * speed,
-        speedY: Math.sin(angle) * speed,
-        life: Math.random() * 40 + 20,
-        maxLife: 60,
-      });
-    }
-  }, []);
+    };  }, [mouseSpeed]); // Remove clickRipples and other dependencies that cause re-renders
 
   return (
     <>
