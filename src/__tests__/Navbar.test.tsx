@@ -7,7 +7,7 @@ describe('Navbar', () => {
   // Helper function to render the component
   const renderNavbar = () => {
     return render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <Navbar />
       </MemoryRouter>,
     );
@@ -23,6 +23,10 @@ describe('Navbar', () => {
       configurable: true,
       value: 0,
     });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   afterAll(() => {
@@ -80,5 +84,15 @@ describe('Navbar', () => {
     const brandLogo = screen.getByText('RL');
     expect(brandLogo).toBeInTheDocument();
     expect(brandLogo).toHaveClass('text-[#00ff9d]');
+  });
+
+  test('handles cleanup on unmount', () => {
+    const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
+
+    const { unmount } = renderNavbar();
+    unmount();
+
+    // Verify event listener was cleaned up
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
   });
 });
