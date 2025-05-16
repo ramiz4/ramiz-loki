@@ -27,8 +27,8 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/ramizloki-redesign.git
-   cd ramizloki-redesign
+   git clone https://github.com/ramiz4/ramiz-loki.git
+   cd ramiz-loki
    ```
 
 2. Install dependencies
