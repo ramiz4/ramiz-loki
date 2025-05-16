@@ -3,25 +3,30 @@
   "private": true,
   "type": "module",
   "homepage": "https://ramiz4.github.io/ramiz-loki",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "packageManager": "pnpm@8.0.0 || >=8.0.0",
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx vite build",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "preinstall": "node preinstall.js",
+    "dev": "pnpm vite",
+    "build": "pnpm vite build",
+    "lint": "pnpm eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "fix-imports": "node fix-imports.js",
-    "format": "node fix-imports.js && eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
-    "preview": "npx vite preview",
-    "test": "cross-env NODE_OPTIONS=--no-deprecation jest",
-    "test:watch": "cross-env NODE_OPTIONS=--no-deprecation jest --watch",
-    "test:coverage": "cross-env NODE_OPTIONS=--no-deprecation jest --coverage",
+    "format": "node fix-imports.js && pnpm eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && pnpm prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "preview": "pnpm vite preview",
+    "test": "pnpm cross-env NODE_OPTIONS=--no-deprecation jest",
+    "test:watch": "pnpm cross-env NODE_OPTIONS=--no-deprecation jest --watch",
+    "test:coverage": "pnpm cross-env NODE_OPTIONS=--no-deprecation jest --coverage",
     "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "pnpm gh-pages -d dist"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^12.7.0",
     "lucide-react": "^0.323.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.5.1"
+    "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
