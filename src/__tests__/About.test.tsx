@@ -40,7 +40,7 @@ describe('About', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        'Transformed delivery frameworks to an agile and iterative methodology as a team thought leader.',
+        'Led the shift to agile, introducing iterative delivery methods as a team thought leader.',
       ),
     ).toBeInTheDocument();
     expect(
