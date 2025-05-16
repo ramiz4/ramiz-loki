@@ -57,6 +57,64 @@ describe('Navbar', () => {
     expect(screen.getByText('CONTACT')).toBeInTheDocument();
   });
 
+  // Test to verify navigation links have correct attributes
+  test('navigation links have correct href attributes and styling', () => {
+    renderNavbar();
+
+    // Get all the navigation links
+    const aboutLink = screen.getByText('ABOUT');
+    const skillsLink = screen.getByText('SKILLS');
+    const experienceLink = screen.getByText('EXPERIENCE');
+    const educationLink = screen.getByText('EDUCATION');
+    const contactLink = screen.getByText('CONTACT');
+
+    // Verify they have the correct href attributes
+    expect(aboutLink).toHaveAttribute('href', '#about');
+    expect(skillsLink).toHaveAttribute('href', '#skills');
+    expect(experienceLink).toHaveAttribute('href', '#experience');
+    expect(educationLink).toHaveAttribute('href', '#education');
+    expect(contactLink).toHaveAttribute('href', '#contact');
+
+    // Verify they have the correct styling classes
+    expect(aboutLink).toHaveClass('text-sm');
+    expect(aboutLink).toHaveClass('tracking-wider');
+    expect(aboutLink).toHaveClass('transition-colors');
+    expect(aboutLink).toHaveClass('duration-300');
+    expect(aboutLink).toHaveClass('text-gray-300');
+    expect(aboutLink).toHaveClass('hover:text-[#00ff9d]');
+  });
+
+  // Test to verify mobile menu toggle button has correct attributes
+  test('mobile menu toggle button has correct attributes and styling', () => {
+    renderNavbar();
+
+    // Get the mobile menu toggle button
+    const menuButton = screen.getByRole('button');
+
+    // Verify it has the correct styling classes
+    expect(menuButton).toHaveClass('inline-flex');
+    expect(menuButton).toHaveClass('items-center');
+    expect(menuButton).toHaveClass('justify-center');
+    expect(menuButton).toHaveClass('p-2');
+    expect(menuButton).toHaveClass('text-gray-400');
+    expect(menuButton).toHaveClass('hover:text-[#00ff9d]');
+    expect(menuButton).toHaveClass('transition-colors');
+    expect(menuButton).toHaveClass('duration-300');
+
+    // Verify it's inside the appropriate container
+    const container = menuButton.parentElement;
+    expect(container).toHaveClass('md:hidden');
+  });
+
+  // Test to verify mobile menu is not rendered initially
+  test('mobile menu is not rendered initially', () => {
+    renderNavbar();
+
+    // Check that the mobile menu is not rendered initially
+    const mobileMenu = screen.queryByTestId('mobile-menu');
+    expect(mobileMenu).not.toBeInTheDocument();
+  });
+  
   test('displays mobile menu button', () => {
     renderNavbar();
 
