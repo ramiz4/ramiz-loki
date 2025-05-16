@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface AnimatedBackgroundProps {
   imagePath: string;
@@ -71,10 +71,11 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
       clearTimeout(timer);
     };
   }, []);
+
   useEffect(() => {
     // Skip canvas operations when running in test environment
     if (process.env.NODE_ENV === 'test') return;
-    
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
