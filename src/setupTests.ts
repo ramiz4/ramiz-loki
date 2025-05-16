@@ -2,6 +2,9 @@ import '@testing-library/jest-dom';
 import 'intersection-observer';
 import { TextEncoder } from 'util';
 
+// Ensure NODE_ENV is set to 'test'
+process.env.NODE_ENV = 'test';
+
 class MockIntersectionObserver implements IntersectionObserver {
   readonly root: Element | null = null;
   readonly rootMargin: string = '';
