@@ -46,8 +46,9 @@ export function Header() {
             </p>
             <div className="flex items-center justify-center gap-6 mb-12 animate-fade-in-up animation-delay-500">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/ramiz-loki/"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                target="_blank"
               >
                 <LinkedinIcon
                   size={20}
@@ -55,8 +56,9 @@ export function Header() {
                 />
               </a>
               <a
-                href="#"
+                href="https://github.com/ramiz4"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                target="_blank"
               >
                 <SiGithub
                   size={20}
@@ -64,8 +66,9 @@ export function Header() {
                 />
               </a>
               <a
-                href="#"
+                href="https://stackoverflow.com/users/3466032/ramiz4"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                target="_blank"
               >
                 <SiStackoverflow
                   size={20}
