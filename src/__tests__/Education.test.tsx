@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-
+import { render, screen, act } from '@testing-library/react';
 import { Education } from '../components/Education';
 
 describe('Education', () => {
@@ -77,5 +76,67 @@ describe('Education', () => {
     // Find the education section
     const educationSection = container.querySelector('#education');
     expect(educationSection).toBeInTheDocument();
+  });
+
+  test('triggers animation when element intersects', () => {
+    // Mock implementation with callback capture
+    let intersectionCallback: IntersectionObserverCallback;
+    const observeMock = jest.fn();
+    const unobserveMock = jest.fn();
+    
+    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+      intersectionCallback = callback;
+      return {
+        observe: observeMock,
+        unobserve: unobserveMock,
+        disconnect: jest.fn(),
+      };
+    });
+
+    const { container } = render(<Education />);
+    
+    // Verify observer was initialized with correct threshold
+    expect(window.IntersectionObserver).toHaveBeenCalledWith(
+      expect.any(Function),
+      { threshold: 0.2 }
+    );
+    
+    // Simulate intersection event (element comes into view)
+    act(() => {
+      intersectionCallback([
+        {
+          isIntersecting: true,
+          target: container.querySelector('#education') as Element,
+        } as IntersectionObserverEntry,
+      ], {} as IntersectionObserver);
+    });
+
+    // Check if animations are applied (education cards should have the 'visible' class)
+    const educationCards = container.querySelectorAll('.education-card');
+    educationCards.forEach(card => {
+      expect(card).toHaveClass('visible');
+      expect(card).not.toHaveClass('invisible');
+    });
+  });
+
+  test('cleans up intersection observer on unmount', () => {
+    const observeMock = jest.fn();
+    const unobserveMock = jest.fn();
+    
+    window.IntersectionObserver = jest.fn().mockImplementation(() => {
+      return {
+        observe: observeMock,
+        unobserve: unobserveMock,
+        disconnect: jest.fn(),
+      };
+    });
+
+    const { unmount } = render(<Education />);
+    
+    // Unmount the component
+    unmount();
+    
+    // Verify unobserve was called during cleanup
+    expect(unobserveMock).toHaveBeenCalled();
   });
 });

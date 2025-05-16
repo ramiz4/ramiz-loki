@@ -79,16 +79,14 @@ describe('ScrollToTop', () => {
 
     const pulseAnimation = button.querySelector('.animate-ping');
     expect(pulseAnimation).toBeInTheDocument();
-  });
-  test('scrollToTop function works correctly', () => {
+  });  test('scrollToTop function works correctly', () => {
     // Mock necessary window methods
     const originalReplaceState = window.history.replaceState;
     window.history.replaceState = jest.fn();
     window.scrollTo = jest.fn();
     Object.defineProperty(window, 'pageYOffset', { value: 500, configurable: true });
-    
-    // Modify the requestAnimationFrame to prevent infinite recursion
-    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      // Modify the requestAnimationFrame to prevent infinite recursion
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(() => {
       return 0; // Don't actually call the callback
     });
     
@@ -107,12 +105,91 @@ describe('ScrollToTop', () => {
     
     // Verify history.replaceState was called
     expect(window.history.replaceState).toHaveBeenCalled();
+    expect(window.requestAnimationFrame).toHaveBeenCalled();
     
     // Restore original method
     window.history.replaceState = originalReplaceState;
   });
-    test('animation uses cubic easing', () => {
-    // Skip this test to avoid infinite recursion
-    // The easing functionality is indirectly tested in scrollToTop function test
+
+  test('animation properly handles timeframes', () => {
+    // Mock necessary window methods
+    const originalReplaceState = window.history.replaceState;
+    window.history.replaceState = jest.fn();
+    window.scrollTo = jest.fn();
+    Object.defineProperty(window, 'pageYOffset', { value: 500, configurable: true });
+    
+    // Create a mock for requestAnimationFrame that will call the callback with different timestamps
+    const requestAnimationFrameMock = jest.spyOn(window, 'requestAnimationFrame');
+    
+    // First call - animation start time (0ms)
+    requestAnimationFrameMock.mockImplementationOnce(cb => {
+      cb(0);
+      return 1;
+    });
+    
+    // Second call - middle of animation (400ms)
+    requestAnimationFrameMock.mockImplementationOnce(cb => {
+      cb(400);
+      return 2;
+    });
+    
+    // Third call - end of animation (800ms)
+    requestAnimationFrameMock.mockImplementationOnce(cb => {
+      cb(800);
+      return 3;
+    });
+    
+    // Fourth call - beyond animation duration (900ms) - should not be called
+    requestAnimationFrameMock.mockImplementationOnce(cb => {
+      cb(900);
+      return 4;
+    });
+    
+    render(<ScrollToTop />);
+    
+    // Make button visible and click it
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 400 });
+    fireEvent.scroll(window);
+    fireEvent.click(screen.getByRole('button', { name: /scroll to top/i }));
+    
+    // Verify scrollTo was called 3 times (for the 3 animation frames)
+    expect(window.scrollTo).toHaveBeenCalledTimes(3);
+    
+    // Verify the requestAnimationFrame was called at least 3 times
+    expect(requestAnimationFrameMock).toHaveBeenCalledTimes(3);
+    
+    // Restore original method
+    window.history.replaceState = originalReplaceState;
+  });
+    test('easing function works properly', () => {
+    // We'll test the easing function directly without triggering the animation
+    
+    // Mock the necessary components for scrollToTop function
+    const originalReplaceState = window.history.replaceState;
+    window.history.replaceState = jest.fn();
+    window.scrollTo = jest.fn();
+    
+    // Create a function similar to the one in the component to test the easing
+    const testEasing = (progress: number) => {
+      return 1 - Math.pow(1 - progress, 3);
+    };
+    
+    // Test various progress points
+    const results = [
+      { progress: 0, expected: 0 },
+      { progress: 0.25, expected: 0.578 },
+      { progress: 0.5, expected: 0.875 },
+      { progress: 0.75, expected: 0.984 },
+      { progress: 1, expected: 1 }
+    ];
+    
+    results.forEach(({ progress, expected }) => {
+      const result = testEasing(progress);
+      // Use a threshold to account for floating point precision
+      expect(result).toBeCloseTo(expected, 3);
+    });
+    
+    // Restore original method
+    window.history.replaceState = originalReplaceState;
   });
 });

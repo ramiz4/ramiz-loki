@@ -41,7 +41,7 @@ export function About() {
       icon: <UserIcon size={32} className="text-[#1a1a1a]" />,
       title: 'Team Leader',
       description:
-        'Transformed delivery frameworks to an agile and iterative methodology as a team thought leader.',
+        'Led the shift to agile, introducing iterative delivery methods as a team thought leader.',
       color: '#00E5FF',
     },
     {
