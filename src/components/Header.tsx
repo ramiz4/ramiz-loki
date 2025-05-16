@@ -1,24 +1,12 @@
 import { SiGithub, SiStackoverflow } from '@icons-pack/react-simple-icons';
 import { LinkedinIcon } from 'lucide-react';
 
+import '../styles/header.css';
+import { scrollToSection } from '../utils/navigationUtils';
 import { AnimatedBackground } from './AnimatedBackground';
 import { ScrollIndicator } from './ScrollIndicator';
-import '../styles/header.css';
 
 export function Header() {
-  // Handle clicking on navigation links
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string,
-  ) => {
-    e.preventDefault();
-
-    // Update URL hash without page reload
-    window.location.hash = sectionId;
-
-    // Element scrolling is handled by the ScrollToSection component in App.tsx
-  };
-
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-1000"
@@ -75,8 +63,7 @@ export function Header() {
                   className="text-[#00ff9d] transition-transform"
                 />
               </a>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
+            </div>            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
               <a
                 href="#contact"
                 onClick={e => scrollToSection(e, 'contact')}
