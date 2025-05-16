@@ -22,10 +22,9 @@ export function Header() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-1000"
-      id="header"
-    >
+      id="header"    >
       {/* Using the extracted AnimatedBackground component */}
-      <AnimatedBackground imagePath="/hero-bg.png" />
+      <AnimatedBackground imagePath="./hero-bg.png" />
 
       <div className="flex flex-col items-center justify-center min-h-screen w-full">
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
