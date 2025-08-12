@@ -16,6 +16,8 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 - Contact form
 - Dark/Light mode (coming soon)
 
+[Preview](https://ramiz4.github.io/ramiz-loki)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
