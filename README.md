@@ -43,8 +43,8 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
    The application uses a base path for asset loading. By default, it's set to `/ramiz-loki/` for GitHub Pages deployment.
    
    To customize the base path:
-   - Copy `.env.example` to `.env.local`
-   - Modify `VITE_BASE_PATH` in `.env.local` to your desired path
+   - Copy `.env.example` to `.env`
+   - Modify `VITE_BASE_PATH` in `.env` to your desired path
    - For local development without a base path, use `VITE_BASE_PATH=/`
 
 4. Start the development server
@@ -102,7 +102,7 @@ The application supports the following environment variables:
   - Used for asset loading and routing
   - Set to `/` for development without a base path
   - Set to your custom path for different deployment environments
-  - Can be overridden in `.env.local` for local development
+  - Copy `.env.example` to `.env` and modify as needed
 
 ## 📄 License
 
