@@ -56,6 +56,9 @@ jobs:
       
       - name: Build
         run: pnpm run build
+        # Optional: Override base path by setting VITE_BASE_PATH environment variable
+        # env:
+        #   VITE_BASE_PATH: /custom-path/
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
