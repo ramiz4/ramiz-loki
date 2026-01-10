@@ -38,12 +38,21 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
    npm install
    ```
 
-3. Start the development server
+3. (Optional) Configure the base path
+   
+   The application uses a base path for asset loading. By default, it's set to `/ramiz-loki/` for GitHub Pages deployment.
+   
+   To customize the base path:
+   - Copy `.env.example` to `.env.local`
+   - Modify `VITE_BASE_PATH` in `.env.local` to your desired path
+   - For local development without a base path, use `VITE_BASE_PATH=/`
+
+4. Start the development server
    ```bash
    npm run dev
    ```
 
-4. Open your browser and visit `http://localhost:5173`
+5. Open your browser and visit `http://localhost:5173`
 
 ## 🛠️ Available Scripts
 
@@ -84,6 +93,16 @@ npm run test
 ## 🔧 Customization
 
 You can easily customize this portfolio by editing the content in the component files located in the `/src/components` directory.
+
+### Environment Variables
+
+The application supports the following environment variables:
+
+- `VITE_BASE_PATH` - Base path for the application (default: `/ramiz-loki/`)
+  - Used for asset loading and routing
+  - Set to `/` for development without a base path
+  - Set to your custom path for different deployment environments
+  - Can be overridden in `.env.local` for local development
 
 ## 📄 License
 
