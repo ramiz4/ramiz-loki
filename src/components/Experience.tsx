@@ -152,7 +152,7 @@ export function Experience() {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-10 left-10 w-96 h-96 bg-primary-600/5 rounded-full blur-[100px] transition-all duration-1000 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+          className={`absolute top-10 left-10 w-96 h-96 bg-[#00ff9d]/5 rounded-full blur-[100px] transition-all duration-1000 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
         ></div>
         <div
           className={`absolute bottom-10 right-10 w-80 h-80 bg-[#0088ff]/5 rounded-full blur-[100px] transition-all duration-1000 delay-300 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
@@ -166,7 +166,7 @@ export function Experience() {
           <span className="relative inline-block">
             <span className="relative z-10">{t.experience.title}</span>
             <span
-              className={`absolute bottom-1 left-0 h-3 w-full bg-primary-600/20 rounded-sm transition-all duration-1000 delay-500 ${isInView ? 'w-full' : 'w-0'}`}
+              className={`absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm transition-all duration-1000 delay-500 ${isInView ? 'w-full' : 'w-0'}`}
             ></span>
           </span>
         </h2>

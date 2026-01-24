@@ -165,15 +165,15 @@ export function Skills() {
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-600/5 rounded-full blur-[100px]"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#00ff9d]/5 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#00ff9d]/5 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-4xl font-bold mb-4 text-center">
           <span className="relative inline-block">
             <span className="relative z-10">{t.skills.title}</span>
-            <span className="absolute bottom-1 left-0 h-3 w-full bg-primary-600/20 rounded-sm"></span>
+            <span className="absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-14 max-w-lg mx-auto">
@@ -188,15 +188,21 @@ export function Skills() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`relative overflow-hidden flex items-center px-6 py-3 rounded-md font-medium text-sm transition-all duration-300
+                className={`relative overflow-hidden flex items-center px-6 py-3 rounded-full font-medium text-sm transition-all duration-500
                   ${
                     activeCategory === category.id
-                      ? 'bg-primary-600 text-white shadow-lg'
+                      ? 'bg-[#00ff9d] text-gray-900 shadow-[0_0_15px_rgba(0,255,157,0.4)]'
                       : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
               >
-                <Icon size={16} className={`mr-2`} />
+                <Icon
+                  size={16}
+                  className={`mr-2 transition-transform duration-300 ${activeCategory === category.id ? 'rotate-0' : 'rotate-0'}`}
+                />
                 {category.name}
+                {activeCategory === category.id && (
+                  <span className="absolute inset-0 bg-white opacity-20 animate-pulse-subtle"></span>
+                )}
               </button>
             );
           })}
@@ -207,8 +213,9 @@ export function Skills() {
           {filteredSkills.map((skill, index) => (
             <div
               key={index}
-              className="group bg-white/5 backdrop-blur-xl p-6 rounded-lg shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all duration-300"
+              className="group bg-white/5 backdrop-blur-xl p-6 rounded-xl shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-[#00ff9d]/10"
               style={{
+                transition: 'all 0.4s cubic-bezier(0.1, 0.7, 0.1, 1)',
                 animationDelay: `${index * 0.1}s`,
                 opacity: isInView ? 1 : 0,
                 transform: isInView ? 'translateY(0)' : 'translateY(20px)',
@@ -217,7 +224,7 @@ export function Skills() {
               <div className="flex flex-col items-center space-y-4">
                 {/* Icon with animated ring */}
                 <div className="relative h-20 w-20 flex items-center justify-center mb-2">
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-primary-500/30 transition-all duration-300"></div>
+                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-[#00ff9d]/30 transition-all duration-500"></div>
                   <div
                     className="absolute inset-0 rounded-full"
                     style={{
@@ -227,17 +234,17 @@ export function Skills() {
                       transition: 'all 1s ease-out',
                     }}
                   ></div>
-                  <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-300">
+                  <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-500">
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+                      className="w-10 h-10 transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
 
                 {/* Skill name */}
-                <span className="text-base font-medium text-gray-200 group-hover:text-primary-500 transition-colors duration-300">
+                <span className="text-base font-medium text-gray-200 group-hover:text-[#00ff9d] transition-colors duration-300">
                   {skill.name}
                 </span>
 

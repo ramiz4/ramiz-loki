@@ -61,7 +61,7 @@ export function Languages() {
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-primary-600/5 rounded-full blur-[100px]"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-[#00ff9d]/5 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#8C43FF]/5 rounded-full blur-[100px]"></div>
       </div>
 
@@ -69,7 +69,7 @@ export function Languages() {
         <h2 className="text-4xl font-bold mb-3 text-center">
           <span className="relative inline-block">
             <span className="relative z-10">Languages</span>
-            <span className="absolute bottom-1 left-0 h-3 w-full bg-primary-600/20 rounded-sm"></span>
+            <span className="absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">

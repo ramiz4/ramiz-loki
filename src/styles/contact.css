@@ -1,8 +1,8 @@
 /* Contact section animations and styling */
 .grid-lines-overlay {
   background-image:
-    linear-gradient(to right, #3b82f610 1px, transparent 1px),
-    linear-gradient(to bottom, #3b82f610 1px, transparent 1px);
+    linear-gradient(to right, #00ff9d10 1px, transparent 1px),
+    linear-gradient(to bottom, #00ff9d10 1px, transparent 1px);
   background-size: 50px 50px;
   opacity: 0.3;
   animation: gridPulse 8s infinite ease-in-out;
@@ -35,7 +35,7 @@
 .form-field input:focus,
 .form-field textarea:focus {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 255, 157, 0.1);
 }
 
 /* Loading spinner animation */
