@@ -22,8 +22,6 @@
 }
 
 .language-card {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
