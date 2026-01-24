@@ -87,7 +87,7 @@ export function About() {
           {aboutCards.map((card, index) => (
             <div
               key={index}
-              className={`about-card about-card-animate ${isInView ? 'in-view' : ''}`}
+              className={`about-card about-card-animate backdrop-blur-xl ${isInView ? 'in-view' : ''}`}
               style={{
                 transitionDelay: `${index * 0.15}s`,
               }}

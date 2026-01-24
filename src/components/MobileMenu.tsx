@@ -7,7 +7,7 @@ export function MobileMenu() {
     const location = useLocation();
 
     return (
-        <div className="md:hidden bg-[#001a11]/95 backdrop-blur-md border-b border-[#00ff9d]/10">
+        <div className="md:hidden bg-white/5 backdrop-blur-xl border-b border-white/10">
             <div className="px-2 pt-2 pb-3 space-y-1">
                 {['About', 'Skills', 'Experience', 'Education', 'Contact'].map(
                     item => (

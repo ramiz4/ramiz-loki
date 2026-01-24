@@ -16,7 +16,7 @@ export function Footer() {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 animate-fade-in-up">
-          <div className="bg-[#2a2a2a] p-8 rounded-lg border border-[#00ff9d]/20 shadow-[0_0_30px_rgba(0,255,157,0.1)]">
+          <div className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:bg-white/10 hover:border-white/20 transition-all duration-300">
             <h3 className="text-2xl font-bold mb-6 text-white">
               Ramiz{' '}
               <span className="text-[#00ff9d] relative">
@@ -49,7 +49,7 @@ export function Footer() {
               </a>
             </div>
           </div>
-          <div className="bg-[#2a2a2a] p-8 rounded-lg border border-[#00ff9d]/20 shadow-[0_0_30px_rgba(0,255,157,0.1)]">
+          <div className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:bg-white/10 hover:border-white/20 transition-all duration-300">
             <h3 className="text-2xl font-bold mb-6 text-white">
               Contact{' '}
               <span className="text-[#00ff9d] relative">

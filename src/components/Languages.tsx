@@ -80,7 +80,7 @@ export function Languages() {
           {languages.map((language, index) => (
             <div
               key={index}
-              className={`language-card language-card-animate ${isInView ? 'in-view' : ''}`}
+              className={`language-card language-card-animate backdrop-blur-xl ${isInView ? 'in-view' : ''}`}
               style={{
                 transitionDelay: `${index * 0.15}s`,
               }}
