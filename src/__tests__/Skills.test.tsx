@@ -157,7 +157,7 @@ describe('Skills', () => {
       ], {} as IntersectionObserver);
     });      // Check if animations are applied based on the isInView state being true
     // Skill cards should have opacity 1 and no longer have translateY
-    const skillCards = container.querySelectorAll('.group.bg-\\[\\#222222\\]');
+    const skillCards = container.querySelectorAll('.group.bg-white\\/5');
     expect(skillCards.length).toBeGreaterThan(0);
     skillCards.forEach(card => {
       expect(card).toHaveStyle({ opacity: '1' });

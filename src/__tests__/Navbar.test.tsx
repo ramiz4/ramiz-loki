@@ -143,8 +143,8 @@ describe('Navbar', () => {
     });
 
     // Navbar should now be opaque
-    expect(navbar).toHaveClass('bg-[#001a11]/80');
-    expect(navbar).toHaveClass('backdrop-blur-md');
+    expect(navbar).toHaveClass('bg-white/5');
+    expect(navbar).toHaveClass('backdrop-blur-xl');
   });
 
   test('navbar has correct brand/logo', () => {
@@ -211,7 +211,7 @@ describe('Navbar', () => {
 
     // Navbar should be opaque
     const navbar = screen.getByRole('navigation');
-    expect(navbar).toHaveClass('bg-[#001a11]/80');
+    expect(navbar).toHaveClass('bg-white/5');
 
     // Now scroll back to top
     act(() => {
