@@ -1,4 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
+
 import { Experience } from '../components/Experience';
 
 describe('Experience', () => {
@@ -134,7 +135,7 @@ describe('Experience', () => {
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
 
-    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+    window.IntersectionObserver = jest.fn().mockImplementation(callback => {
       intersectionCallback = callback;
       return {
         observe: observeMock,
@@ -148,22 +149,27 @@ describe('Experience', () => {
     // Verify observer was initialized with correct threshold
     expect(window.IntersectionObserver).toHaveBeenCalledWith(
       expect.any(Function),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     // Simulate intersection event (element comes into view)
     act(() => {
-      intersectionCallback([
-        {
-          isIntersecting: true,
-          target: container.querySelector('#experience') as Element,
-        } as IntersectionObserverEntry,
-      ], {} as IntersectionObserver);
+      intersectionCallback(
+        [
+          {
+            isIntersecting: true,
+            target: container.querySelector('#experience') as Element,
+          } as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      );
     });
 
     // Check if animations are applied based on the isInView state being true
     // Animation elements like the timeline center line should no longer have opacity-0
-    const timelineCenterLine = container.querySelector('.lg\\:block.relative > div');
+    const timelineCenterLine = container.querySelector(
+      '.lg\\:block.relative > div',
+    );
     expect(timelineCenterLine).toHaveClass('opacity-100');
     expect(timelineCenterLine).not.toHaveClass('opacity-0');
   });
@@ -193,7 +199,9 @@ describe('Experience', () => {
     render(<Experience />);
 
     expect(
-      screen.getAllByText('Currently working in this position. More details to come...')[0]
+      screen.getAllByText(
+        'Currently working in this position. More details to come...',
+      )[0],
     ).toBeInTheDocument();
   });
 });

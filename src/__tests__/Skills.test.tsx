@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
+
 import { Skills } from '../components/Skills';
 
 describe('Skills', () => {
@@ -119,14 +120,14 @@ describe('Skills', () => {
     const skillsSection = container.querySelector('#skills');
     expect(skillsSection).toBeInTheDocument();
   });
-  
+
   test('triggers animation when element intersects', () => {
     // Mock implementation with callback capture
     let intersectionCallback: IntersectionObserverCallback;
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
-    
-    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+
+    window.IntersectionObserver = jest.fn().mockImplementation(callback => {
       intersectionCallback = callback;
       return {
         observe: observeMock,
@@ -140,22 +141,25 @@ describe('Skills', () => {
     });
 
     const { container } = render(<Skills />);
-    
+
     // Verify observer was initialized with correct threshold
     expect(window.IntersectionObserver).toHaveBeenCalledWith(
       expect.any(Function),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
-    
+
     // Simulate intersection event (element comes into view)
     act(() => {
-      intersectionCallback([
-        {
-          isIntersecting: true,
-          target: container.querySelector('#skills') as Element,
-        } as IntersectionObserverEntry,
-      ], {} as IntersectionObserver);
-    });      // Check if animations are applied based on the isInView state being true
+      intersectionCallback(
+        [
+          {
+            isIntersecting: true,
+            target: container.querySelector('#skills') as Element,
+          } as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      );
+    }); // Check if animations are applied based on the isInView state being true
     // Skill cards should have opacity 1 and no longer have translateY
     const skillCards = container.querySelectorAll('.group.bg-white\\/5');
     expect(skillCards.length).toBeGreaterThan(0);
@@ -167,7 +171,7 @@ describe('Skills', () => {
   test('cleans up intersection observer on unmount', () => {
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
-    
+
     window.IntersectionObserver = jest.fn().mockImplementation(() => {
       return {
         observe: observeMock,
@@ -181,10 +185,10 @@ describe('Skills', () => {
     });
 
     const { unmount } = render(<Skills />);
-    
+
     // Unmount the component
     unmount();
-    
+
     // Verify unobserve was called during cleanup
     expect(unobserveMock).toHaveBeenCalled();
   });

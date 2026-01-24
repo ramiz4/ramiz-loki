@@ -3,6 +3,7 @@ import { LinkedinIcon } from 'lucide-react';
 
 import '../styles/header.css';
 import { scrollToSection } from '../utils/navigationUtils';
+
 import { AnimatedBackground } from './AnimatedBackground';
 import { ScrollIndicator } from './ScrollIndicator';
 
@@ -10,7 +11,8 @@ export function Header() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-1000"
-      id="header"    >
+      id="header"
+    >
       {/* Using the extracted AnimatedBackground component */}
       <AnimatedBackground imagePath="./hero-bg.png" />
 
@@ -63,7 +65,8 @@ export function Header() {
                   className="text-[#00ff9d] transition-transform"
                 />
               </a>
-            </div>            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
+            </div>{' '}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
               <a
                 href="#contact"
                 onClick={e => scrollToSection(e, 'contact')}

@@ -77,7 +77,7 @@ describe('About', () => {
     let intersectionCallback: IntersectionObserverCallback;
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
-    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+    window.IntersectionObserver = jest.fn().mockImplementation(callback => {
       intersectionCallback = callback;
       return {
         observe: observeMock,
@@ -91,17 +91,20 @@ describe('About', () => {
     // Verify observer was initialized with correct threshold
     expect(window.IntersectionObserver).toHaveBeenCalledWith(
       expect.any(Function),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     // Simulate intersection event (element comes into view)
     act(() => {
-      intersectionCallback([
-        {
-          isIntersecting: true,
-          target: container.querySelector('#about') as Element,
-        } as IntersectionObserverEntry,
-      ], {} as IntersectionObserver);
+      intersectionCallback(
+        [
+          {
+            isIntersecting: true,
+            target: container.querySelector('#about') as Element,
+          } as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      );
     });
 
     // Check if animations are applied (cards should have the 'in-view' class)

@@ -1,4 +1,5 @@
 import { render, screen, act } from '@testing-library/react';
+
 import { Education } from '../components/Education';
 
 describe('Education', () => {
@@ -83,8 +84,8 @@ describe('Education', () => {
     let intersectionCallback: IntersectionObserverCallback;
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
-    
-    window.IntersectionObserver = jest.fn().mockImplementation((callback) => {
+
+    window.IntersectionObserver = jest.fn().mockImplementation(callback => {
       intersectionCallback = callback;
       return {
         observe: observeMock,
@@ -94,21 +95,24 @@ describe('Education', () => {
     });
 
     const { container } = render(<Education />);
-    
+
     // Verify observer was initialized with correct threshold
     expect(window.IntersectionObserver).toHaveBeenCalledWith(
       expect.any(Function),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
-    
+
     // Simulate intersection event (element comes into view)
     act(() => {
-      intersectionCallback([
-        {
-          isIntersecting: true,
-          target: container.querySelector('#education') as Element,
-        } as IntersectionObserverEntry,
-      ], {} as IntersectionObserver);
+      intersectionCallback(
+        [
+          {
+            isIntersecting: true,
+            target: container.querySelector('#education') as Element,
+          } as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      );
     });
 
     // Check if animations are applied (education cards should have the 'visible' class)
@@ -122,7 +126,7 @@ describe('Education', () => {
   test('cleans up intersection observer on unmount', () => {
     const observeMock = jest.fn();
     const unobserveMock = jest.fn();
-    
+
     window.IntersectionObserver = jest.fn().mockImplementation(() => {
       return {
         observe: observeMock,
@@ -132,10 +136,10 @@ describe('Education', () => {
     });
 
     const { unmount } = render(<Education />);
-    
+
     // Unmount the component
     unmount();
-    
+
     // Verify unobserve was called during cleanup
     expect(unobserveMock).toHaveBeenCalled();
   });

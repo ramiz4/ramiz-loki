@@ -1,7 +1,9 @@
 import { MenuIcon, XIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import { scrollToSection } from '../utils/navigationUtils';
+
 import { MobileMenu } from './MobileMenu';
 
 export function Navbar() {
@@ -34,27 +36,38 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">            <a
-            href="#"
-            onClick={e => scrollToSection(e, '', isMenuOpen, setIsMenuOpen)}
-            className="cursor-pointer"
-          >
-            <span className="text-[#00ff9d] font-bold text-2xl tracking-tight">
-              RL
-            </span>
-          </a>
+          <div className="flex items-center">
+            {' '}
+            <a
+              href="#"
+              onClick={e => scrollToSection(e, '', isMenuOpen, setIsMenuOpen)}
+              className="cursor-pointer"
+            >
+              <span className="text-[#00ff9d] font-bold text-2xl tracking-tight">
+                RL
+              </span>
+            </a>
           </div>
           <div className="hidden md:block">
             <div className="flex items-center space-x-8">
               {['About', 'Skills', 'Experience', 'Education', 'Contact'].map(
                 item => (
                   <a
-                    key={item} href={`#${item.toLowerCase()}`}
-                    onClick={e => scrollToSection(e, item.toLowerCase(), isMenuOpen, setIsMenuOpen)}
-                    className={`text-sm tracking-wider transition-colors duration-300 ${location.hash === `#${item.toLowerCase()}`
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={e =>
+                      scrollToSection(
+                        e,
+                        item.toLowerCase(),
+                        isMenuOpen,
+                        setIsMenuOpen,
+                      )
+                    }
+                    className={`text-sm tracking-wider transition-colors duration-300 ${
+                      location.hash === `#${item.toLowerCase()}`
                         ? 'text-[#00ff9d]'
                         : 'text-gray-300 hover:text-[#00ff9d]'
-                      }`}
+                    }`}
                   >
                     {item.toUpperCase()}
                   </a>
@@ -74,7 +87,7 @@ export function Navbar() {
       </div>
       {/* Mobile menu */}
       {isMenuOpen && (
-        <MobileMenu />
+        <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       )}
     </nav>
   );
