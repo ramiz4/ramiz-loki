@@ -12,8 +12,7 @@
     "dev": "pnpm vite",
     "build": "pnpm vite build",
     "lint": "pnpm eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "fix-imports": "node fix-imports.js",
-    "format": "node fix-imports.js && pnpm eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && pnpm prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "format": "pnpm eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && pnpm prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
     "preview": "pnpm vite preview",
     "test": "pnpm cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=test jest",
     "test:watch": "pnpm cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=test jest --watch",
@@ -66,7 +65,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "node ./fix-imports.js",
       "eslint --fix",
       "prettier --write"
     ],

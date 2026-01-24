@@ -84,8 +84,8 @@ This project uses industry-standard tooling for code quality:
 
 The project automatically formats code before each commit using:
 
-1. **ESLint** with auto-fix for JavaScript/TypeScript files
-2. **Prettier** for all supported file types (JS, TS, CSS, JSON, MD)
+1. **ESLint** with auto-fix for code quality and import organization
+2. **Prettier** for consistent formatting across all file types
 
 This ensures all committed code follows the project's style guidelines. The hooks are automatically installed when you run `pnpm install`.
 
