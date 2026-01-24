@@ -1,6 +1,7 @@
-import { render, screen, act } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 
 import { Education } from '../components/Education';
+import { render } from './test-utils';
 
 describe('Education', () => {
   beforeEach(() => {
@@ -16,10 +17,10 @@ describe('Education', () => {
 
   test('renders section title correctly', () => {
     render(<Education />);
-    expect(screen.getByText('Educational Background')).toBeInTheDocument();
+    expect(screen.getByText('Education')).toBeInTheDocument();
     expect(
       screen.getByText(
-        'My academic journey and qualifications that have shaped my expertise',
+        'My academic background and certifications',
       ),
     ).toBeInTheDocument();
   });

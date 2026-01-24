@@ -1,10 +1,13 @@
 import { CodeIcon, UserIcon, BriefcaseIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+
 import '../styles/about.css';
+import { useTranslations } from '../hooks/useTranslations';
 
 export function About() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,23 +35,20 @@ export function About() {
   const aboutCards = [
     {
       icon: <CodeIcon size={32} className="text-[#1a1a1a]" />,
-      title: 'Full-Stack Developer',
-      description:
-        'Experienced in building responsive web applications using modern frameworks and technologies.',
+      title: t.about.fullStackTitle,
+      description: t.about.fullStackDesc,
       color: '#00ff9d',
     },
     {
       icon: <UserIcon size={32} className="text-[#1a1a1a]" />,
-      title: 'Team Leader',
-      description:
-        'Led the shift to agile, introducing iterative delivery methods as a team thought leader.',
+      title: t.about.teamLeaderTitle,
+      description: t.about.teamLeaderDesc,
       color: '#00E5FF',
     },
     {
       icon: <BriefcaseIcon size={32} className="text-[#1a1a1a]" />,
-      title: 'Problem Solver',
-      description:
-        'Passionate about following best practices and participating in code reviews to ensure high-quality code.',
+      title: t.about.problemSolverTitle,
+      description: t.about.problemSolverDesc,
       color: '#8C43FF',
     },
   ];
@@ -75,12 +75,12 @@ export function About() {
       <div className="max-w-5xl mx-auto relative z-10">
         <h2 className="text-4xl font-bold mb-3 text-center">
           <span className="relative inline-block">
-            <span className="relative z-10">About Me</span>
+            <span className="relative z-10">{t.about.title}</span>
             <span className="absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">
-          My experience, expertise and passion
+          {t.about.subtitle}
         </p>
 
         <div className="grid gap-8 md:grid-cols-3">

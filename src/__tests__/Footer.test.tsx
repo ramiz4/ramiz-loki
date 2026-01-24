@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import { Footer } from '../components/Footer';
+import { render } from './test-utils';
 
 describe('Footer', () => {
   test('renders footer with correct name and title', () => {
@@ -18,8 +19,7 @@ describe('Footer', () => {
     render(<Footer />);
 
     // Check contact heading
-    expect(screen.getByText('Contact')).toBeInTheDocument();
-    expect(screen.getByText('Info')).toBeInTheDocument();
+    expect(screen.getByText('Contact Info')).toBeInTheDocument();
 
     // Check contact details
     expect(screen.getByText('Email')).toBeInTheDocument();

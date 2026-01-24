@@ -1,7 +1,11 @@
 import { SiGithub, SiStackoverflow } from '@icons-pack/react-simple-icons';
 import { LinkedinIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
 
+import { useTranslations } from '../hooks/useTranslations';
+
 export function Footer() {
+  const t = useTranslations();
+
   return (
     <footer
       className="relative bg-[#1a1a1a] py-16 px-4 overflow-hidden"
@@ -24,10 +28,7 @@ export function Footer() {
                 <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
               </span>
             </h3>
-            <p className="text-gray-300 mb-6">
-              Senior Full-Stack Software Engineer with extensive experience in
-              web development and team leadership.
-            </p>
+            <p className="text-gray-300 mb-6">{t.footer.tagline}</p>
             <div className="flex space-x-4">
               <a
                 href="https://www.linkedin.com/in/ramiz-loki/"
@@ -60,9 +61,8 @@ export function Footer() {
           </div>
           <div className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:bg-white/10 hover:border-white/20 transition-all duration-300">
             <h3 className="text-2xl font-bold mb-6 text-white">
-              Contact{' '}
+              {t.footer.contactInfo}{' '}
               <span className="text-[#00ff9d] relative">
-                Info
                 <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
               </span>
             </h3>
@@ -72,7 +72,7 @@ export function Footer() {
                   <MailIcon size={20} className="text-[#00ff9d]" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-sm text-gray-400">{t.footer.email}</p>
                   <a
                     href="mailto:me@ramizloki.com"
                     className="text-white hover:text-[#00ff9d] transition-colors"
@@ -86,7 +86,7 @@ export function Footer() {
                   <PhoneIcon size={20} className="text-[#00ff9d]" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p>
+                  <p className="text-sm text-gray-400">{t.footer.phone}</p>
                   <a
                     href="tel:+41764418288"
                     className="text-white hover:text-[#00ff9d] transition-colors"
@@ -100,7 +100,7 @@ export function Footer() {
                   <MapPinIcon size={20} className="text-[#00ff9d]" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Location</p>
+                  <p className="text-sm text-gray-400">{t.footer.location}</p>
                   <p className="text-white">Wettingen, Switzerland</p>
                 </div>
               </div>
@@ -114,7 +114,8 @@ export function Footer() {
         {/* Copyright and back to top */}
         <div className="flex flex-col md:flex-row justify-between items-center animate-fade-in-up animation-delay-200">
           <p className="text-gray-400 font-mono">
-            © {new Date().getFullYear()} Ramiz Loki. All rights reserved.
+            © {new Date().getFullYear()} Ramiz Loki.{' '}
+            {t.footer.allRightsReserved}
           </p>
         </div>
       </div>
