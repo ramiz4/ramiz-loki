@@ -55,7 +55,11 @@ export function Experience() {
       period: '08/2022 - 04/2025',
       title: 'Full Stack Software Engineer',
       company: 'Base-Net Informatik AG, Sursee, Luzern',
-      details: [],
+      details: [
+        'Developed and maintained full-stack features for financial software products using modern web technologies',
+        'Designed and implemented REST-APIs and database schemas to support complex business workflows',
+        'Collaborated with cross-functional teams to improve performance, reliability, and user experience across the platform',
+      ],
       color: '#FF6B6B',
       tags: ['REST-API', 'Datenbanken', 'Full Stack', 'Backend'],
     },
