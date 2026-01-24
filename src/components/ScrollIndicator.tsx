@@ -28,7 +28,7 @@ export function ScrollIndicator() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#00ff9d] to-[#00E5FF] rounded-full transition-all duration-300"
+          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[rgb(59 130 246)] to-[#00E5FF] rounded-full transition-all duration-300"
           style={{ height: `${scrollProgress}%` }}
         ></div>
 
@@ -38,20 +38,20 @@ export function ScrollIndicator() {
           style={{
             height: `${scrollProgress}%`,
             bottom: 0,
-            background: 'linear-gradient(to top, #00ff9d, #00E5FF)',
+            background: 'linear-gradient(to top, rgb(59 130 246), #00E5FF)',
           }}
         ></div>
 
         {/* Dot indicator */}
         <div
-          className="absolute left-1/2 w-3 h-3 bg-[#00ff9d] rounded-full transform -translate-x-1/2 shadow-md transition-all duration-200 hover:scale-150"
+          className="absolute left-1/2 w-3 h-3 bg-primary-600 rounded-full transform -translate-x-1/2 shadow-md transition-all duration-200 hover:scale-150"
           style={{
             bottom: `${scrollProgress}%`,
             transform: `translateY(50%) translateX(-50%) ${isHovered ? 'scale(1.5)' : 'scale(1)'}`,
           }}
         >
           <div
-            className={`absolute inset-0 bg-[#00ff9d] rounded-full animate-ping ${isHovered ? 'opacity-30' : 'opacity-0'}`}
+            className={`absolute inset-0 bg-primary-600 rounded-full animate-ping ${isHovered ? 'opacity-30' : 'opacity-0'}`}
           ></div>
         </div>
       </div>

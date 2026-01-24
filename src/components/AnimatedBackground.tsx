@@ -237,7 +237,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute h-full w-px bg-gradient-to-b from-transparent via-[#00ff9d15] to-transparent"
+            className="absolute h-full w-px bg-gradient-to-b from-transparent via-[rgb(59 130 246)15] to-transparent"
             style={{
               left: `${(i + 1) * 15 + mousePosition.x * 0.2}%`,
               animation: `verticalLine 3s ease-in-out infinite`,

@@ -47,11 +47,11 @@ describe('MobileMenu Component', () => {
 
     // Find the Skills link and check its styling
     const skillsLink = links.find(link => link.textContent === 'SKILLS');
-    expect(skillsLink).toHaveClass('text-[#00ff9d]');
+    expect(skillsLink).toHaveClass('text-primary-500');
 
     // Other links should not have the active styling
     const aboutLink = links.find(link => link.textContent === 'ABOUT');
-    expect(aboutLink).not.toHaveClass('text-[#00ff9d]');
+    expect(aboutLink).not.toHaveClass('text-primary-500');
     expect(aboutLink).toHaveClass('text-gray-300');
   });
 

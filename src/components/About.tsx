@@ -34,22 +34,22 @@ export function About() {
 
   const aboutCards = [
     {
-      icon: <CodeIcon size={32} className="text-[#1a1a1a]" />,
+      icon: <CodeIcon size={32} className="text-white" />,
       title: t.about.fullStackTitle,
       description: t.about.fullStackDesc,
-      color: '#00ff9d',
+      color: '#3b82f6',
     },
     {
-      icon: <UserIcon size={32} className="text-[#1a1a1a]" />,
+      icon: <UserIcon size={32} className="text-white" />,
       title: t.about.teamLeaderTitle,
       description: t.about.teamLeaderDesc,
-      color: '#00E5FF',
+      color: '#2563eb',
     },
     {
-      icon: <BriefcaseIcon size={32} className="text-[#1a1a1a]" />,
+      icon: <BriefcaseIcon size={32} className="text-white" />,
       title: t.about.problemSolverTitle,
       description: t.about.problemSolverDesc,
-      color: '#8C43FF',
+      color: '#1d4ed8',
     },
   ];
 
@@ -61,8 +61,8 @@ export function About() {
     >
       {/* Animated background elements - keeping this as requested */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#00ff9d]/5 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#8C43FF]/5 rounded-full blur-[100px]"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-primary-600/5 rounded-full blur-[100px]"></div>
 
         {/* Keeping the particle effects as requested */}
         <div className="particle particle-1"></div>
@@ -76,7 +76,7 @@ export function About() {
         <h2 className="text-4xl font-bold mb-3 text-center">
           <span className="relative inline-block">
             <span className="relative z-10">{t.about.title}</span>
-            <span className="absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm"></span>
+            <span className="absolute bottom-1 left-0 h-3 w-full bg-primary-600/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">
@@ -94,17 +94,13 @@ export function About() {
             >
               <div className="p-8 relative">
                 <div className="icon-container mb-6 flex justify-center">
-                  <div className="p-4 bg-gradient-to-br from-[#00ff9d] to-[#00cc7d] rounded-2xl shadow-lg shadow-green-500/20">
+                  <div className="p-4 bg-primary-600 rounded-lg shadow-lg">
                     {card.icon}
                   </div>
-                  <div className="absolute -z-10 animate-pulse-slow opacity-50 p-4 bg-[#00ff9d] rounded-2xl blur-md"></div>
                 </div>
 
                 <div className="mb-4">
-                  <h3
-                    className="text-2xl font-bold text-center"
-                    style={{ color: card.color }}
-                  >
+                  <h3 className="text-2xl font-bold text-center text-white">
                     {card.title}
                   </h3>
                 </div>

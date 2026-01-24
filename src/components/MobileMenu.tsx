@@ -36,10 +36,10 @@ export function MobileMenu({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) {
             onClick={e =>
               scrollToSection(e, item.key, isMenuOpen, setIsMenuOpen)
             }
-            className={`block px-3 py-2 hover:bg-[#00ff9d]/5 rounded-lg transition-all duration-300 ${
+            className={`block px-3 py-2 hover:bg-primary-600/5 rounded-lg transition-all duration-300 ${
               location.hash === `#${item.key}`
-                ? 'text-[#00ff9d]'
-                : 'text-gray-300 hover:text-[#00ff9d]'
+                ? 'text-primary-500'
+                : 'text-gray-300 hover:text-primary-500'
             }`}
           >
             {item.label}

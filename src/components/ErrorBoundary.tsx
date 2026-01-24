@@ -36,7 +36,7 @@ export class ErrorBoundary extends Component<
       return (
         <div className="min-h-screen bg-[#1a1a1a] text-gray-100 flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)]">
-            <h1 className="text-3xl font-bold mb-4 text-[#00ff9d]">
+            <h1 className="text-3xl font-bold mb-4 text-primary-500">
               Oops! Something went wrong
             </h1>
             <p className="text-gray-300 mb-6">
@@ -44,7 +44,7 @@ export class ErrorBoundary extends Component<
             </p>
             {this.state.error && (
               <details className="mb-6">
-                <summary className="text-sm text-gray-400 cursor-pointer hover:text-[#00ff9d] transition-colors">
+                <summary className="text-sm text-gray-400 cursor-pointer hover:text-primary-500 transition-colors">
                   Error details
                 </summary>
                 <pre className="mt-2 p-4 bg-black/30 rounded text-xs text-red-400 overflow-auto">
@@ -54,7 +54,7 @@ export class ErrorBoundary extends Component<
             )}
             <button
               onClick={() => window.location.reload()}
-              className="w-full px-8 py-3 bg-[#00ff9d] text-gray-900 rounded-lg font-mono hover:bg-[#00cc7a] transition-all duration-300 hover:scale-[1.02]"
+              className="w-full px-8 py-3 bg-primary-600 text-gray-900 rounded-lg font-mono hover:bg-[rgb(37 99 235)] transition-all duration-300 hover:scale-[1.02]"
             >
               Refresh Page
             </button>

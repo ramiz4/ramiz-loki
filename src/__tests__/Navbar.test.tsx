@@ -80,11 +80,11 @@ describe('Navbar', () => {
 
     // Verify they have the correct styling classes
     expect(aboutLink).toHaveClass('text-sm');
-    expect(aboutLink).toHaveClass('tracking-wider');
+    expect(aboutLink).toHaveClass('font-medium');
     expect(aboutLink).toHaveClass('transition-colors');
     expect(aboutLink).toHaveClass('duration-300');
     expect(aboutLink).toHaveClass('text-gray-300');
-    expect(aboutLink).toHaveClass('hover:text-[#00ff9d]');
+    expect(aboutLink).toHaveClass('hover:text-primary-500');
   });
 
   // Test to verify mobile menu toggle button has correct attributes
@@ -100,7 +100,7 @@ describe('Navbar', () => {
     expect(menuButton).toHaveClass('justify-center');
     expect(menuButton).toHaveClass('p-2');
     expect(menuButton).toHaveClass('text-gray-400');
-    expect(menuButton).toHaveClass('hover:text-[#00ff9d]');
+    expect(menuButton).toHaveClass('hover:text-primary-500');
     expect(menuButton).toHaveClass('transition-colors');
     expect(menuButton).toHaveClass('duration-300');
 
@@ -156,7 +156,7 @@ describe('Navbar', () => {
     // Check for logo/brand
     const brandLogo = screen.getByText('RL');
     expect(brandLogo).toBeInTheDocument();
-    expect(brandLogo).toHaveClass('text-[#00ff9d]');
+    expect(brandLogo).toHaveClass('text-primary-500');
   });
 
   test('handles cleanup on unmount', () => {
