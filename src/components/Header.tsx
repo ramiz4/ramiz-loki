@@ -39,6 +39,8 @@ export function Header() {
                 href="https://www.linkedin.com/in/ramiz-loki/"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my LinkedIn profile"
               >
                 <LinkedinIcon
                   size={20}
@@ -49,6 +51,8 @@ export function Header() {
                 href="https://github.com/ramiz4"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub profile"
               >
                 <SiGithub
                   size={20}
@@ -59,6 +63,8 @@ export function Header() {
                 href="https://stackoverflow.com/users/3466032/ramiz4"
                 className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Stack Overflow profile"
               >
                 <SiStackoverflow
                   size={20}

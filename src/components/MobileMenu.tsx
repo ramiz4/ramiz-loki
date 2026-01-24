@@ -12,7 +12,11 @@ export function MobileMenu({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) {
   const location = useLocation();
 
   return (
-    <div className="md:hidden bg-white/5 backdrop-blur-xl border-b border-white/10">
+    <div
+      className="md:hidden bg-white/5 backdrop-blur-xl border-b border-white/10"
+      role="navigation"
+      aria-label="Mobile navigation menu"
+    >
       <div className="px-2 pt-2 pb-3 space-y-1">
         {['About', 'Skills', 'Experience', 'Education', 'Contact'].map(item => (
           <a
@@ -26,6 +30,9 @@ export function MobileMenu({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) {
                 ? 'text-[#00ff9d]'
                 : 'text-gray-300 hover:text-[#00ff9d]'
             }`}
+            aria-current={
+              location.hash === `#${item.toLowerCase()}` ? 'page' : undefined
+            }
           >
             {item}
           </a>

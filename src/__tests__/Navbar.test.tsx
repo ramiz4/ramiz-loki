@@ -1,7 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import * as MobileMenuModule from '../components/MobileMenu';
 import { Navbar } from '../components/Navbar';
 
 // Mock navigationUtils

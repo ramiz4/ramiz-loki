@@ -148,11 +148,13 @@ export function Contact() {
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full px-8 py-4 bg-[#00ff9d] text-gray-900 rounded-lg font-mono hover:bg-[#00cc7a] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(0,255,157,0.3)] disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                aria-describedby={submitSuccess ? 'submit-success' : undefined}
               >
                 {isSubmitting ? (
                   <div
                     data-testid="loading-spinner"
                     className="loading-spinner"
+                    aria-label="Submitting form"
                   ></div>
                 ) : (
                   <>
@@ -163,7 +165,12 @@ export function Contact() {
               </button>
 
               {submitSuccess && (
-                <div className="mt-4 p-4 bg-[#00ff9d]/10 border border-[#00ff9d]/30 rounded-lg text-[#00ff9d] text-center animate-fade-in">
+                <div
+                  id="submit-success"
+                  role="status"
+                  aria-live="polite"
+                  className="mt-4 p-4 bg-[#00ff9d]/10 border border-[#00ff9d]/30 rounded-lg text-[#00ff9d] text-center animate-fade-in"
+                >
                   Message sent successfully! I'll get back to you soon.
                 </div>
               )}

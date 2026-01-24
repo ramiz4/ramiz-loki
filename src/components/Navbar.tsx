@@ -79,6 +79,8 @@ export function Navbar() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 text-gray-400 hover:text-[#00ff9d] transition-colors duration-300"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
             </button>
