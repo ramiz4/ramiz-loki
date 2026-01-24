@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ReactNode } from 'react';
+import * as ReactRouterDom from 'react-router-dom';
 
 import { App } from '../App';
 
@@ -101,8 +102,10 @@ describe('App', () => {
     jest.useFakeTimers();
 
     // Mock useLocation to return a hash
-    const useLocationMock = require('react-router-dom').useLocation;
-    useLocationMock.mockReturnValue({ hash: '#test' });
+    const useLocationMock = jest.mocked(ReactRouterDom.useLocation);
+    useLocationMock.mockReturnValue({
+      hash: '#test',
+    } as ReactRouterDom.Location);
 
     render(<App />);
 
@@ -124,8 +127,8 @@ describe('App', () => {
     jest.useFakeTimers();
 
     // Mock useLocation to return an empty hash
-    const useLocationMock = require('react-router-dom').useLocation;
-    useLocationMock.mockReturnValue({ hash: '' });
+    const useLocationMock = jest.mocked(ReactRouterDom.useLocation);
+    useLocationMock.mockReturnValue({ hash: '' } as ReactRouterDom.Location);
 
     render(<App />);
 
@@ -146,8 +149,10 @@ describe('App', () => {
     jest.useFakeTimers();
 
     // Mock useLocation to return a hash
-    const useLocationMock = require('react-router-dom').useLocation;
-    useLocationMock.mockReturnValue({ hash: '#test' });
+    const useLocationMock = jest.mocked(ReactRouterDom.useLocation);
+    useLocationMock.mockReturnValue({
+      hash: '#test',
+    } as ReactRouterDom.Location);
 
     // Mock document.getElementById
     jest
@@ -177,8 +182,10 @@ describe('App', () => {
     jest.useFakeTimers();
 
     // Mock useLocation to return a hash
-    const useLocationMock = require('react-router-dom').useLocation;
-    useLocationMock.mockReturnValue({ hash: '#nonexistent' });
+    const useLocationMock = jest.mocked(ReactRouterDom.useLocation);
+    useLocationMock.mockReturnValue({
+      hash: '#nonexistent',
+    } as ReactRouterDom.Location);
 
     // Mock document.getElementById to return null
     jest.spyOn(document, 'getElementById').mockImplementation(() => null);

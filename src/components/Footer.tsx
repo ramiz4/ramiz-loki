@@ -30,20 +30,29 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/ramiz-loki/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                aria-label="Visit my LinkedIn profile"
               >
                 <LinkedinIcon size={20} className="text-[#00ff9d]" />
               </a>
               <a
-                href="#"
+                href="https://github.com/ramiz4"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                aria-label="Visit my GitHub profile"
               >
                 <SiGithub size={20} className="text-[#00ff9d]" />
               </a>
               <a
-                href="#"
+                href="https://stackoverflow.com/users/3466032/ramiz4"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                aria-label="Visit my Stack Overflow profile"
               >
                 <SiStackoverflow size={20} className="text-[#00ff9d]" />
               </a>
@@ -78,7 +87,12 @@ export function Footer() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <span className="text-white">+41 76 441 8288</span>
+                  <a
+                    href="tel:+41764418288"
+                    className="text-white hover:text-[#00ff9d] transition-colors"
+                  >
+                    +41 76 441 8288
+                  </a>
                 </div>
               </div>
               <div className="flex items-center contact-info-item">

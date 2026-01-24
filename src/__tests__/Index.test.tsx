@@ -63,17 +63,17 @@ describe('Index / Entry point', () => {
     expect(mockRoot.render).toHaveBeenCalledWith(expect.any(Object));
   });
 
-  test('throws error when root element is not found', () => {
+  test('throws error when root element is not found', async () => {
     // Mock getElementById to return null
     const originalGetElementById = document.getElementById;
     document.getElementById = jest.fn().mockReturnValue(null);
 
-    // The error should be thrown when we require the module
-    expect(() => {
-      jest.isolateModules(() => {
-        require('../index');
+    // The error should be thrown when we import the module
+    await expect(async () => {
+      await jest.isolateModulesAsync(async () => {
+        await import('../index');
       });
-    }).toThrow('Root element not found');
+    }).rejects.toThrow('Root element not found');
 
     // Restore the original implementation
     document.getElementById = originalGetElementById;

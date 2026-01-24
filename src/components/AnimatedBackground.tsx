@@ -18,13 +18,13 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [mouseSpeed, setMouseSpeed] = useState(0);
-  const [clickRipples, setClickRipples] = useState<
-    { x: number; y: number; size: number; opacity: number }[]
-  >([]);
   const lastMousePos = useRef({ x: 0, y: 0 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>(0);
+  const clickRipplesRef = useRef<
+    { x: number; y: number; size: number; opacity: number }[]
+  >([]);
 
   // Calculate color shift based on current mousePosition for rendering
   const colorShift = `hsla(${130 + ((mousePosition.x + 50) % 30)}, 100%, 50%, 0.05)`;
@@ -73,7 +73,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         opacity: 0.8,
       };
 
-      setClickRipples(prev => [...prev, newRipple]);
+      clickRipplesRef.current = [...clickRipplesRef.current, newRipple];
       addParticles(e.clientX, e.clientY, 15);
     };
 
@@ -152,7 +152,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
       ctx.fill();
 
       // Handle clickRipples updates with refs to avoid unnecessary state updates during animation
-      const updatedRipples = clickRipples
+      clickRipplesRef.current = clickRipplesRef.current
         .map(ripple => ({
           ...ripple,
           size: ripple.size + 10,
@@ -160,13 +160,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         }))
         .filter(ripple => ripple.opacity > 0);
 
-      // Only update state if the array actually changed and not on every frame
-      if (JSON.stringify(updatedRipples) !== JSON.stringify(clickRipples)) {
-        setClickRipples(updatedRipples);
-      }
-
       // Use the updated ripples for rendering in this frame
-      updatedRipples.forEach(ripple => {
+      clickRipplesRef.current.forEach(ripple => {
         ctx.strokeStyle = `hsla(${145 + currentHue}, 100%, 70%, ${ripple.opacity})`;
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -183,7 +178,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [mouseSpeed]); // Remove clickRipples and other dependencies that cause re-renders
+  }, [mouseSpeed]); // mouseSpeed is the only state dependency; refs are accessed directly in the animation loop
 
   return (
     <>

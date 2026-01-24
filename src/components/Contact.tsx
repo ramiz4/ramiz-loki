@@ -153,6 +153,7 @@ export function Contact() {
                   <div
                     data-testid="loading-spinner"
                     className="loading-spinner"
+                    aria-label="Submitting form"
                   ></div>
                 ) : (
                   <>
@@ -163,7 +164,12 @@ export function Contact() {
               </button>
 
               {submitSuccess && (
-                <div className="mt-4 p-4 bg-[#00ff9d]/10 border border-[#00ff9d]/30 rounded-lg text-[#00ff9d] text-center animate-fade-in">
+                <div
+                  id="submit-success"
+                  role="status"
+                  aria-live="polite"
+                  className="mt-4 p-4 bg-[#00ff9d]/10 border border-[#00ff9d]/30 rounded-lg text-[#00ff9d] text-center animate-fade-in"
+                >
                   Message sent successfully! I'll get back to you soon.
                 </div>
               )}

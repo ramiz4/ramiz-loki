@@ -1,3 +1,4 @@
+/* eslint-env jest, node */
 // Mock implementation for canvas module
 const createCanvasMock = () => {
   return {
