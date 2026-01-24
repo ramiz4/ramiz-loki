@@ -36,12 +36,28 @@ export function Experience() {
 
   const experiences = [
     {
-      period: '08/2022 - Present',
-      title: 'Senior Full-Stack Software Engineer',
-      company: 'Base-Net Informatik AG, Sursee',
+      period: '10/2025 - Present',
+      title: 'Lead Software Engineer (Full Stack)',
+      company: 'Martha Software GmbH',
       details: [],
       color: '#00E5FF',
-      tags: ['Angular', 'TypeScript', 'Node.js', 'MongoDB'],
+      tags: ['Full Stack', 'Leadership', 'Software Architecture'],
+    },
+    {
+      period: '03/2024 - 09/2025',
+      title: 'Full Stack Software Engineer',
+      company: 'FINNOFLEET Schweiz, Zürich, Bern, Sursee',
+      details: [],
+      color: '#00FF9D',
+      tags: ['Java', 'Spring Boot', 'Full Stack', 'Microservices'],
+    },
+    {
+      period: '08/2022 - 04/2025',
+      title: 'Full Stack Software Engineer',
+      company: 'Base-Net Informatik AG, Sursee, Luzern',
+      details: [],
+      color: '#FF6B6B',
+      tags: ['REST-API', 'Datenbanken', 'Full Stack', 'Backend'],
     },
     {
       period: '01/2014 - 07/2022',
@@ -55,7 +71,7 @@ export function Experience() {
         'Familiar with development tools such as cross-compilation, source revision control, Profiling, Bug tracking (JIRA) and Continuous delivery (Bamboo, Jenkins)',
         'Part of a team and thought leader to transform our delivery framework to an agile and iterative methodology',
       ],
-      color: '#00FF9D',
+      color: '#FFB84D',
       tags: ['Angular', 'MEAN Stack', 'REST', 'JIRA', 'CI/CD'],
     },
     {
