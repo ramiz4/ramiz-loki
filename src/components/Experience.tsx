@@ -259,7 +259,7 @@ export function Experience() {
                   )}
 
                   {exp.details.length === 0 &&
-                    exp.period.includes('Present') && (
+                    exp.period.endsWith('Present') && (
                       <div className="text-gray-400 italic">
                         Currently working in this position. More details to
                         come...
@@ -353,7 +353,7 @@ export function Experience() {
                   )}
 
                   {exp.details.length === 0 &&
-                    exp.period.includes('Present') && (
+                    exp.period.endsWith('Present') && (
                       <div className="text-gray-400 italic text-xs">
                         Currently working in this position. More details to
                         come...
