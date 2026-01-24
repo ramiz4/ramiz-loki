@@ -66,6 +66,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
+      "node fix-imports.js",
       "eslint --fix",
       "prettier --write"
     ],
