@@ -8,7 +8,7 @@ export default {
         'ping-slow': 'ping 3s cubic-bezier(0.4, 0.6, 1) infinite',
         'zoom-breathe': 'cinematicJourney 40s ease-in-out infinite alternate',
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {

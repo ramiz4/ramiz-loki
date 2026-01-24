@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
 import { MobileMenu } from '../components/MobileMenu';
 import * as navigationUtils from '../utils/navigationUtils';
 
@@ -9,6 +10,8 @@ jest.mock('../utils/navigationUtils', () => ({
 }));
 
 describe('MobileMenu Component', () => {
+  const mockSetIsMenuOpen = jest.fn();
+
   beforeEach(() => {
     // Clear all mocks before each test
     jest.clearAllMocks();
@@ -17,8 +20,8 @@ describe('MobileMenu Component', () => {
   test('renders navigation links', () => {
     render(
       <MemoryRouter>
-        <MobileMenu />
-      </MemoryRouter>
+        <MobileMenu isMenuOpen={true} setIsMenuOpen={mockSetIsMenuOpen} />
+      </MemoryRouter>,
     );
 
     // Check that all navigation links are rendered
@@ -33,17 +36,17 @@ describe('MobileMenu Component', () => {
     // Set up the hash in memory router
     render(
       <MemoryRouter initialEntries={['/#skills']}>
-        <MobileMenu />
-      </MemoryRouter>
+        <MobileMenu isMenuOpen={true} setIsMenuOpen={mockSetIsMenuOpen} />
+      </MemoryRouter>,
     );
 
     // Get all links
     const links = screen.getAllByRole('link');
-    
+
     // Find the Skills link and check its styling
     const skillsLink = links.find(link => link.textContent === 'Skills');
     expect(skillsLink).toHaveClass('text-[#00ff9d]');
-    
+
     // Other links should not have the active styling
     const aboutLink = links.find(link => link.textContent === 'About');
     expect(aboutLink).not.toHaveClass('text-[#00ff9d]');
@@ -53,8 +56,8 @@ describe('MobileMenu Component', () => {
   test('calls scrollToSection when a link is clicked', () => {
     render(
       <MemoryRouter>
-        <MobileMenu />
-      </MemoryRouter>
+        <MobileMenu isMenuOpen={true} setIsMenuOpen={mockSetIsMenuOpen} />
+      </MemoryRouter>,
     );
 
     // Find and click on a link
@@ -63,13 +66,13 @@ describe('MobileMenu Component', () => {
 
     // Verify that scrollToSection was called with correct arguments
     expect(navigationUtils.scrollToSection).toHaveBeenCalledTimes(1);
-    
+
     // The first argument is the event, second is the section ID
     expect(navigationUtils.scrollToSection).toHaveBeenCalledWith(
       expect.any(Object), // MouseEvent
       'contact',
-      false, // isMenuOpen
-      expect.any(Function) // setIsMenuOpen
+      true, // isMenuOpen
+      mockSetIsMenuOpen, // setIsMenuOpen
     );
   });
 });

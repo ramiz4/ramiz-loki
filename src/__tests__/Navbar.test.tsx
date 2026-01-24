@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
 import { Navbar } from '../components/Navbar';
 
 // Mock navigationUtils
@@ -114,7 +115,7 @@ describe('Navbar', () => {
     const mobileMenu = screen.queryByTestId('mobile-menu');
     expect(mobileMenu).not.toBeInTheDocument();
   });
-  
+
   test('displays mobile menu button', () => {
     renderNavbar();
 
@@ -163,19 +164,24 @@ describe('Navbar', () => {
     unmount();
 
     // Verify event listener was cleaned up
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
+    expect(removeEventListenerSpy).toHaveBeenCalledWith(
+      'scroll',
+      expect.any(Function),
+    );
   });
 
   // Alternative approach without mocking useState
   test('toggles mobile menu when button is clicked', () => {
-    // Since we can't easily mock the useState inside the component, 
+    // Since we can't easily mock the useState inside the component,
     // we'll just test the result of clicking, which should toggle the visibility
     // of a div in the DOM
 
     // Mock implementation of MobileMenu to make it easier to test
-    jest.spyOn(require('../components/MobileMenu'), 'MobileMenu').mockImplementation(
-      () => <div data-testid="mobile-menu-mock">Mobile Menu Content</div>
-    );
+    jest
+      .spyOn(require('../components/MobileMenu'), 'MobileMenu')
+      .mockImplementation(() => (
+        <div data-testid="mobile-menu-mock">Mobile Menu Content</div>
+      ));
 
     renderNavbar();
 
@@ -187,10 +193,10 @@ describe('Navbar', () => {
     fireEvent.click(menuButton);
 
     // Try to find the mobile menu - we might need to wait for it
-    // Since our mock isn't showing up in the DOM, let's instead check 
+    // Since our mock isn't showing up in the DOM, let's instead check
     // if there's any change in the button or surrounding elements
 
-    // If we can't verify the mobile menu directly, 
+    // If we can't verify the mobile menu directly,
     // we at least demonstrated that we can click the button without errors
     expect(menuButton).toBeInTheDocument();
   });

@@ -14,7 +14,8 @@ interface Particle {
   maxLife: number;
 }
 
-export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [mouseSpeed, setMouseSpeed] = useState(0);
   const [clickRipples, setClickRipples] = useState<
@@ -81,7 +82,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
 
     const timer = setTimeout(() => setIsLoaded(true), 500);
 
-    return () => {      window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleMouseClick);
       clearTimeout(timer);
     };
@@ -146,7 +148,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
         glowRadius,
         0,
         Math.PI * 2,
-      );      ctx.fill();
+      );
+      ctx.fill();
 
       // Handle clickRipples updates with refs to avoid unnecessary state updates during animation
       const updatedRipples = clickRipples
@@ -156,7 +159,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
           opacity: ripple.opacity - 0.02,
         }))
         .filter(ripple => ripple.opacity > 0);
-      
+
       // Only update state if the array actually changed and not on every frame
       if (JSON.stringify(updatedRipples) !== JSON.stringify(clickRipples)) {
         setClickRipples(updatedRipples);
@@ -179,7 +182,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameRef.current);
-    };  }, [mouseSpeed]); // Remove clickRipples and other dependencies that cause re-renders
+    };
+  }, [mouseSpeed]); // Remove clickRipples and other dependencies that cause re-renders
 
   return (
     <>
@@ -221,14 +225,12 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
           ></div>
         </div>
       </div>
-
       <div
         className="absolute inset-0 bg-[#001a11]/40 backdrop-blur-sm z-0"
         style={{
           transform: `translateZ(${10 + mousePosition.y * 0.2}px)`,
         }}
       ></div>
-
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -236,7 +238,6 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
           transform: `translateZ(${5 + mousePosition.x * 0.1}px)`,
         }}
       ></div>
-
       <div className="absolute inset-0">
         {[...Array(6)].map((_, i) => (
           <div
@@ -250,7 +251,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
             }}
           ></div>
         ))}
-      </div>      <div className="absolute inset-0">
+      </div>
+      <div className="absolute inset-0">
         <div
           className="absolute inset-0 animate-pulse-slow"
           style={{
@@ -258,7 +260,6 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {  co
           }}
         ></div>
       </div>
-
       {process.env.NODE_ENV !== 'test' && (
         <canvas
           ref={canvasRef}

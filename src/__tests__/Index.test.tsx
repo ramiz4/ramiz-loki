@@ -62,7 +62,7 @@ describe('Index / Entry point', () => {
     const mockRoot = (createRoot as jest.Mock).mock.results[0].value;
     expect(mockRoot.render).toHaveBeenCalledWith(expect.any(Object));
   });
-  
+
   test('throws error when root element is not found', () => {
     // Mock getElementById to return null
     const originalGetElementById = document.getElementById;
