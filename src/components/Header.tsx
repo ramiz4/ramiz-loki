@@ -65,7 +65,7 @@ export function Header() {
                   className="text-[#00ff9d] transition-transform"
                 />
               </a>
-            </div>{' '}
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
               <a
                 href="#contact"

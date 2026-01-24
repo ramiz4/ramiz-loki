@@ -251,7 +251,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
             }}
           ></div>
         ))}
-      </div>{' '}
+      </div>
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 animate-pulse-slow"
