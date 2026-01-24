@@ -190,7 +190,7 @@ export function Skills() {
                   ${
                     activeCategory === category.id
                       ? 'bg-[#00ff9d] text-gray-900 shadow-[0_0_15px_rgba(0,255,157,0.4)]'
-                      : 'bg-[#222222] text-gray-300 hover:bg-[#2a2a2a]'
+                      : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
               >
                 <Icon
@@ -211,7 +211,7 @@ export function Skills() {
           {filteredSkills.map((skill, index) => (
             <div
               key={index}
-              className="group bg-[#222222] p-6 rounded-xl shadow-lg border border-gray-800 backdrop-blur-sm"
+              className="group bg-white/5 backdrop-blur-xl p-6 rounded-xl shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-[#00ff9d]/10"
               style={{
                 transition: 'all 0.4s cubic-bezier(0.1, 0.7, 0.1, 1)',
                 animationDelay: `${index * 0.1}s`,
@@ -232,7 +232,7 @@ export function Skills() {
                       transition: 'all 1s ease-out',
                     }}
                   ></div>
-                  <div className="absolute inset-2 bg-[#2a2a2a] rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-500">
+                  <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-500">
                     <img
                       src={skill.icon}
                       alt={skill.name}

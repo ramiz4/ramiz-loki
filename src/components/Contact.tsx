@@ -68,7 +68,7 @@ export function Contact() {
         <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
           <form
             onSubmit={handleSubmit}
-            className="bg-[#2a2a2a] p-8 rounded-lg border border-[#00ff9d]/20 shadow-[0_0_30px_rgba(0,255,157,0.1)]"
+            className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:bg-white/10 hover:border-white/20 transition-all duration-300"
           >
             <h3 className="text-2xl font-bold mb-6 text-white">
               Send a{' '}
@@ -89,7 +89,7 @@ export function Contact() {
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#ffffff20] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white"
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white placeholder:text-gray-500"
                   placeholder="John Doe"
                   required
                 />
@@ -105,7 +105,7 @@ export function Contact() {
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#ffffff20] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white"
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white placeholder:text-gray-500"
                   placeholder="john@example.com"
                   required
                 />
@@ -122,7 +122,7 @@ export function Contact() {
                 name="subject"
                 value={formState.subject}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#ffffff20] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white"
+                className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white placeholder:text-gray-500"
                 placeholder="Project Inquiry"
                 required
               />
@@ -137,7 +137,7 @@ export function Contact() {
                 name="message"
                 value={formState.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#ffffff20] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white min-h-[180px]"
+                className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00ff9d]/50 focus:border-transparent text-white min-h-[180px] placeholder:text-gray-500"
                 placeholder="Your message here..."
                 required
               ></textarea>

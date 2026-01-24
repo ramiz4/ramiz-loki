@@ -22,13 +22,21 @@
 }
 
 .language-card {
-  backdrop-filter: blur(8px);
-  background-color: rgba(26, 26, 26, 0.8);
-  border-radius: 0.75rem;
-  border: 1px solid #333;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.language-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px 0 rgba(0, 255, 157, 0.2);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .language-card-animate {

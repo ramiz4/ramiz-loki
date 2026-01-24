@@ -156,7 +156,7 @@ export function Experience() {
               {/* Content card */}
               <div className={`w-5/12 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
                 <div
-                  className={`bg-[#1a1a1a]/80 backdrop-blur-md p-6 rounded-xl border border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 ${isInView ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform ' + (index % 2 === 0 ? '-translate-x-10' : 'translate-x-10')}`}
+                  className={`bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500 ${isInView ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform ' + (index % 2 === 0 ? '-translate-x-10' : 'translate-x-10')}`}
                   style={{ transitionDelay: `${600 + index * 100}ms` }}
                 >
                   {/* Date badge */}
@@ -253,7 +253,7 @@ export function Experience() {
                 </div>
 
                 {/* Content */}
-                <div className="bg-[#1a1a1a]/80 backdrop-blur-md p-5 rounded-xl border border-gray-800 shadow-lg">
+                <div className="bg-white/5 backdrop-blur-xl p-5 rounded-xl border border-white/10 shadow-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                   <div
                     className="inline-flex items-center rounded-full px-3 py-1 mb-3 text-xs font-medium"
                     style={{

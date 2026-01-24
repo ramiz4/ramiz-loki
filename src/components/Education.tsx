@@ -96,7 +96,7 @@ export function Education() {
 
               {/* Content */}
               <div className="md:ml-10 flex-grow">
-                <div className="bg-gray-800/80 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-gray-700 hover:border-green-500/50 shadow-lg hover:shadow-green-500/5 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-xl p-6 md:p-8 rounded-xl border border-white/10 hover:border-green-500/50 shadow-lg hover:shadow-green-500/20 transition-all duration-300">
                   {/* Time period */}
                   <div className="inline-flex items-center rounded-full px-4 py-1 mb-4 text-sm bg-green-500/10 text-green-400">
                     <CalendarIcon size={14} className="mr-2" />
