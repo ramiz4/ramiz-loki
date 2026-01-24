@@ -1,7 +1,9 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Navbar } from '../components/Navbar';
+
+import { render } from './test-utils';
 
 // Mock navigationUtils
 jest.mock('../utils/navigationUtils', () => ({
@@ -89,8 +91,8 @@ describe('Navbar', () => {
   test('mobile menu toggle button has correct attributes and styling', () => {
     renderNavbar();
 
-    // Get the mobile menu toggle button
-    const menuButton = screen.getByRole('button');
+    // Get the mobile menu toggle button by aria-label
+    const menuButton = screen.getByLabelText('Open menu');
 
     // Verify it has the correct styling classes
     expect(menuButton).toHaveClass('inline-flex');
@@ -119,8 +121,8 @@ describe('Navbar', () => {
   test('displays mobile menu button', () => {
     renderNavbar();
 
-    // Check for mobile menu button
-    const menuButton = screen.getByRole('button');
+    // Check for mobile menu button using aria-label
+    const menuButton = screen.getByLabelText('Open menu');
     expect(menuButton).toBeInTheDocument();
   });
 
@@ -181,8 +183,8 @@ describe('Navbar', () => {
     // Mobile menu should initially be hidden
     expect(screen.queryByTestId('mobile-menu')).not.toBeInTheDocument();
 
-    // Click the button
-    const menuButton = screen.getByRole('button');
+    // Click the button - find by aria-label to distinguish from language switcher
+    const menuButton = screen.getByLabelText('Open menu');
     fireEvent.click(menuButton);
 
     // Try to find the mobile menu - we might need to wait for it
@@ -240,8 +242,8 @@ describe('Navbar', () => {
 
     renderNavbar();
 
-    // Find and click the menu button to open the menu
-    const menuButton = screen.getByRole('button');
+    // Find and click the menu button to open the menu - use aria-label
+    const menuButton = screen.getByLabelText('Open menu');
     fireEvent.click(menuButton);
 
     // Simulate a hash change event

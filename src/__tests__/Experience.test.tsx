@@ -1,6 +1,8 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 
 import { Experience } from '../components/Experience';
+
+import { render } from './test-utils';
 
 describe('Experience', () => {
   beforeEach(() => {
@@ -18,9 +20,7 @@ describe('Experience', () => {
     render(<Experience />);
     expect(screen.getByText('Professional Experience')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        'My professional journey as a software engineer across different companies and roles',
-      ),
+      screen.getByText('My journey through various roles and organizations'),
     ).toBeInTheDocument();
   });
 

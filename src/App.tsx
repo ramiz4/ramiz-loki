@@ -11,6 +11,7 @@ import { Languages } from './components/Languages';
 import { Navbar } from './components/Navbar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Skills } from './components/Skills';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Scroll to view handler
 function ScrollToSection() {
@@ -64,8 +65,10 @@ function MainContent() {
 
 export function App() {
   return (
-    <HashRouter>
-      <MainContent />
-    </HashRouter>
+    <LanguageProvider>
+      <HashRouter>
+        <MainContent />
+      </HashRouter>
+    </LanguageProvider>
   );
 }

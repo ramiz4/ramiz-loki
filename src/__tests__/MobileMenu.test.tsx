@@ -1,8 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { MobileMenu } from '../components/MobileMenu';
 import * as navigationUtils from '../utils/navigationUtils';
+
+import { render } from './test-utils';
 
 // Mock the navigationUtils module
 jest.mock('../utils/navigationUtils', () => ({
@@ -25,11 +27,11 @@ describe('MobileMenu Component', () => {
     );
 
     // Check that all navigation links are rendered
-    expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Skills')).toBeInTheDocument();
-    expect(screen.getByText('Experience')).toBeInTheDocument();
-    expect(screen.getByText('Education')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+    expect(screen.getByText('ABOUT')).toBeInTheDocument();
+    expect(screen.getByText('SKILLS')).toBeInTheDocument();
+    expect(screen.getByText('EXPERIENCE')).toBeInTheDocument();
+    expect(screen.getByText('EDUCATION')).toBeInTheDocument();
+    expect(screen.getByText('CONTACT')).toBeInTheDocument();
   });
 
   test('applies active styling to current hash link', () => {
@@ -44,11 +46,11 @@ describe('MobileMenu Component', () => {
     const links = screen.getAllByRole('link');
 
     // Find the Skills link and check its styling
-    const skillsLink = links.find(link => link.textContent === 'Skills');
+    const skillsLink = links.find(link => link.textContent === 'SKILLS');
     expect(skillsLink).toHaveClass('text-[#00ff9d]');
 
     // Other links should not have the active styling
-    const aboutLink = links.find(link => link.textContent === 'About');
+    const aboutLink = links.find(link => link.textContent === 'ABOUT');
     expect(aboutLink).not.toHaveClass('text-[#00ff9d]');
     expect(aboutLink).toHaveClass('text-gray-300');
   });
@@ -61,7 +63,7 @@ describe('MobileMenu Component', () => {
     );
 
     // Find and click on a link
-    const contactLink = screen.getByText('Contact');
+    const contactLink = screen.getByText('CONTACT');
     fireEvent.click(contactLink);
 
     // Verify that scrollToSection was called with correct arguments

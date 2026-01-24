@@ -5,11 +5,14 @@ import {
   GraduationCapIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+
+import { useTranslations } from '../hooks/useTranslations';
 import '../styles/education.css';
 
 export function Education() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,12 +69,12 @@ export function Education() {
       <div className="max-w-5xl mx-auto relative z-10">
         <h2 className="text-4xl font-bold mb-3 text-center">
           <span className="relative inline-block">
-            <span className="relative z-10">Educational Background</span>
+            <span className="relative z-10">{t.education.title}</span>
             <span className="absolute bottom-1 left-0 h-3 w-full bg-green-500/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">
-          My academic journey and qualifications that have shaped my expertise
+          {t.education.subtitle}
         </p>
 
         {/* Education Timeline */}

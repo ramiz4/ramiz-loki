@@ -2,14 +2,17 @@ import { MenuIcon, XIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { useTranslations } from '../hooks/useTranslations';
 import { scrollToSection } from '../utils/navigationUtils';
 
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const t = useTranslations();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,29 +53,29 @@ export function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="flex items-center space-x-8">
-              {['About', 'Skills', 'Experience', 'Education', 'Contact'].map(
-                item => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    onClick={e =>
-                      scrollToSection(
-                        e,
-                        item.toLowerCase(),
-                        isMenuOpen,
-                        setIsMenuOpen,
-                      )
-                    }
-                    className={`text-sm tracking-wider transition-colors duration-300 ${
-                      location.hash === `#${item.toLowerCase()}`
-                        ? 'text-[#00ff9d]'
-                        : 'text-gray-300 hover:text-[#00ff9d]'
-                    }`}
-                  >
-                    {item.toUpperCase()}
-                  </a>
-                ),
-              )}
+              {[
+                { key: 'about', label: t.nav.about },
+                { key: 'skills', label: t.nav.skills },
+                { key: 'experience', label: t.nav.experience },
+                { key: 'education', label: t.nav.education },
+                { key: 'contact', label: t.nav.contact },
+              ].map(item => (
+                <a
+                  key={item.key}
+                  href={`#${item.key}`}
+                  onClick={e =>
+                    scrollToSection(e, item.key, isMenuOpen, setIsMenuOpen)
+                  }
+                  className={`text-sm tracking-wider transition-colors duration-300 ${
+                    location.hash === `#${item.key}`
+                      ? 'text-[#00ff9d]'
+                      : 'text-gray-300 hover:text-[#00ff9d]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <LanguageSwitcher />
             </div>
           </div>
           <div className="md:hidden">

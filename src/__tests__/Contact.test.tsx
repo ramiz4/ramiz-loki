@@ -1,6 +1,8 @@
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 
 import { Contact } from '../components/Contact';
+
+import { render } from './test-utils';
 
 // Using a different approach without mocking timers
 describe('Contact', () => {

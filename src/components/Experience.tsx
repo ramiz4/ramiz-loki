@@ -5,11 +5,19 @@ import {
   MapPinIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+
+import { useTranslations } from '../hooks/useTranslations';
 import '../styles/experience.css';
 
 export function Experience() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations();
+
+  // Helper function to translate period
+  const translatePeriod = (period: string) => {
+    return period.replace('Present', t.experience.present);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -156,7 +164,7 @@ export function Experience() {
       >
         <h2 className="text-4xl font-bold mb-3 text-center">
           <span className="relative inline-block">
-            <span className="relative z-10">Professional Experience</span>
+            <span className="relative z-10">{t.experience.title}</span>
             <span
               className={`absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm transition-all duration-1000 delay-500 ${isInView ? 'w-full' : 'w-0'}`}
             ></span>
@@ -165,8 +173,7 @@ export function Experience() {
         <p
           className={`text-gray-400 text-center mb-16 max-w-lg mx-auto transition-all duration-700 delay-300 ${isInView ? 'opacity-100' : 'opacity-0'}`}
         >
-          My professional journey as a software engineer across different
-          companies and roles
+          {t.experience.subtitle}
         </p>
 
         {/* Vertical Timeline */}
@@ -208,7 +215,7 @@ export function Experience() {
                     }}
                   >
                     <CalendarIcon size={14} className="mr-2" />
-                    {exp.period}
+                    {translatePeriod(exp.period)}
                   </div>
 
                   {/* Title & company */}
@@ -261,8 +268,7 @@ export function Experience() {
                   {exp.details.length === 0 &&
                     exp.period.endsWith('Present') && (
                       <div className="text-gray-400 italic">
-                        Currently working in this position. More details to
-                        come...
+                        {t.experience.currentlyWorking}
                       </div>
                     )}
                 </div>
@@ -303,7 +309,7 @@ export function Experience() {
                     }}
                   >
                     <CalendarIcon size={12} className="mr-1" />
-                    {exp.period}
+                    {translatePeriod(exp.period)}
                   </div>
 
                   <h3
@@ -355,8 +361,7 @@ export function Experience() {
                   {exp.details.length === 0 &&
                     exp.period.endsWith('Present') && (
                       <div className="text-gray-400 italic text-xs">
-                        Currently working in this position. More details to
-                        come...
+                        {t.experience.currentlyWorking}
                       </div>
                     )}
                 </div>

@@ -7,10 +7,13 @@ import {
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
+import { useTranslations } from '../hooks/useTranslations';
+
 export function Skills() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,27 +41,27 @@ export function Skills() {
   const categories = [
     {
       id: 'all',
-      name: 'All',
+      name: t.skills.all,
       icon: CodeIcon,
     },
     {
       id: 'frontend',
-      name: 'Frontend',
+      name: t.skills.frontend,
       icon: BracesIcon,
     },
     {
       id: 'backend',
-      name: 'Backend',
+      name: t.skills.backend,
       icon: ServerIcon,
     },
     {
       id: 'database',
-      name: 'Database',
+      name: t.skills.database,
       icon: DatabaseIcon,
     },
     {
       id: 'tools',
-      name: 'Tools',
+      name: t.skills.tools,
       icon: WrenchIcon,
     },
   ];
@@ -169,13 +172,12 @@ export function Skills() {
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-4xl font-bold mb-4 text-center">
           <span className="relative inline-block">
-            <span className="relative z-10">Skills & Expertise</span>
+            <span className="relative z-10">{t.skills.title}</span>
             <span className="absolute bottom-1 left-0 h-3 w-full bg-[#00ff9d]/20 rounded-sm"></span>
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-14 max-w-lg mx-auto">
-          My technical toolkit that I've built and refined over the years of
-          development journey
+          {t.skills.subtitle}
         </p>
 
         {/* Category Filter */}
