@@ -1,6 +1,7 @@
 import { act, screen } from '@testing-library/react';
 
 import { Experience } from '../components/Experience';
+
 import { render } from './test-utils';
 
 describe('Experience', () => {
@@ -19,9 +20,7 @@ describe('Experience', () => {
     render(<Experience />);
     expect(screen.getByText('Professional Experience')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        'My journey through various roles and organizations',
-      ),
+      screen.getByText('My journey through various roles and organizations'),
     ).toBeInTheDocument();
   });
 

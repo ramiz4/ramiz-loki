@@ -1,10 +1,17 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react';
 
 export type Language = 'en' | 'de';
 
 interface LanguageContextType {
   language: Language;
-  setLanguage: (language: Language) => void;
+  setLanguage: Dispatch<SetStateAction<Language>>;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(

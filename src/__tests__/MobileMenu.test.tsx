@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { MobileMenu } from '../components/MobileMenu';
 import * as navigationUtils from '../utils/navigationUtils';
-import { LanguageProvider } from '../context/LanguageContext';
+
 import { render } from './test-utils';
 
 // Mock the navigationUtils module

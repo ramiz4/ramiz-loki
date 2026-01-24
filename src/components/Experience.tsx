@@ -6,8 +6,8 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-import '../styles/experience.css';
 import { useTranslations } from '../hooks/useTranslations';
+import '../styles/experience.css';
 
 export function Experience() {
   const [isInView, setIsInView] = useState(false);

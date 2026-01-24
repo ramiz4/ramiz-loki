@@ -1,6 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 
 import { Header } from '../components/Header';
+
 import { render } from './test-utils';
 
 // Mock the ScrollIndicator component

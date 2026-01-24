@@ -1,8 +1,8 @@
 import { SendIcon } from 'lucide-react';
 import { useState } from 'react';
 
-import '../styles/contact.css';
 import { useTranslations } from '../hooks/useTranslations';
+import '../styles/contact.css';
 
 export function Contact() {
   const [formState, setFormState] = useState({

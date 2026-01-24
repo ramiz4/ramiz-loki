@@ -1,8 +1,8 @@
 import { CodeIcon, UserIcon, BriefcaseIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-import '../styles/about.css';
 import { useTranslations } from '../hooks/useTranslations';
+import '../styles/about.css';
 
 export function About() {
   const [isInView, setIsInView] = useState(false);

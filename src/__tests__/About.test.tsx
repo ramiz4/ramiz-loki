@@ -1,6 +1,7 @@
 import { act, screen } from '@testing-library/react';
 
 import { About } from '../components/About';
+
 import { render } from './test-utils';
 
 describe('About', () => {

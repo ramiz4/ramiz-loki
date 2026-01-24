@@ -146,7 +146,7 @@ export const translations = {
     contact: {
       getInTouch: 'KONTAKTIEREN SIE MICH',
       title: 'Kontakt',
-      me: '',
+      me: 'mich',
       subtitle:
         'Lassen Sie uns über Ihr Projekt oder Möglichkeiten zur Zusammenarbeit sprechen',
       sendMessage: 'Eine Nachricht senden',

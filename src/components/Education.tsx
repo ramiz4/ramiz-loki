@@ -6,8 +6,8 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-import '../styles/education.css';
 import { useTranslations } from '../hooks/useTranslations';
+import '../styles/education.css';
 
 export function Education() {
   const [isInView, setIsInView] = useState(false);

@@ -1,6 +1,7 @@
 import { screen, act } from '@testing-library/react';
 
 import { Education } from '../components/Education';
+
 import { render } from './test-utils';
 
 describe('Education', () => {
@@ -19,9 +20,7 @@ describe('Education', () => {
     render(<Education />);
     expect(screen.getByText('Education')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        'My academic background and certifications',
-      ),
+      screen.getByText('My academic background and certifications'),
     ).toBeInTheDocument();
   });
 

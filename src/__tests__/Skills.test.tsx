@@ -1,6 +1,7 @@
 import { act, fireEvent, screen } from '@testing-library/react';
 
 import { Skills } from '../components/Skills';
+
 import { render } from './test-utils';
 
 describe('Skills', () => {

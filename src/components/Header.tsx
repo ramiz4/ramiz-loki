@@ -1,8 +1,8 @@
 import { SiGithub, SiStackoverflow } from '@icons-pack/react-simple-icons';
 import { LinkedinIcon } from 'lucide-react';
 
-import '../styles/header.css';
 import { useTranslations } from '../hooks/useTranslations';
+import '../styles/header.css';
 import { scrollToSection } from '../utils/navigationUtils';
 
 import { AnimatedBackground } from './AnimatedBackground';
