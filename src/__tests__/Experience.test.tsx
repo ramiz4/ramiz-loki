@@ -71,7 +71,7 @@ describe('Experience', () => {
     // Use getAllByText for elements that appear in both desktop and mobile views
     expect(screen.getAllByText('10/2025 - Present')[0]).toBeInTheDocument();
     expect(screen.getAllByText('03/2024 - 09/2025')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('08/2022 - 04/2025')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('08/2022 - 02/2024')[0]).toBeInTheDocument();
     expect(screen.getAllByText('01/2014 - 07/2022')[0]).toBeInTheDocument();
     expect(screen.getAllByText('06/2010 - 09/2010')[0]).toBeInTheDocument();
     expect(screen.getAllByText('12/2007 - 12/2013')[0]).toBeInTheDocument();
@@ -82,17 +82,18 @@ describe('Experience', () => {
     render(<Experience />);
 
     // Use getAllByText for skill tags that appear in both desktop and mobile views
-    expect(screen.getAllByText('Full Stack')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Leadership')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Java')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Spring Boot')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Angular')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Bootstrap')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Docker')[0]).toBeInTheDocument();
     expect(screen.getAllByText('REST-API')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Datenbanken')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('Angular')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('MEAN Stack')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('.NET Core')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('JavaScript')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Python')[0]).toBeInTheDocument();
     expect(screen.getAllByText('Security')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('JavaScript')[0]).toBeInTheDocument();
   });
 
   test('renders job details for completed positions', () => {
