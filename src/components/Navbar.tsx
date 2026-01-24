@@ -28,7 +28,8 @@ export function Navbar() {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
-  }, [location.hash, isMenuOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.hash]);
 
   return (
     <nav
