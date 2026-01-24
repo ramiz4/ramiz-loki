@@ -28,7 +28,7 @@ export function ScrollIndicator() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[rgb(59 130 246)] to-[#00E5FF] rounded-full transition-all duration-300"
+          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-full transition-all duration-300"
           style={{ height: `${scrollProgress}%` }}
         ></div>
 
@@ -38,7 +38,7 @@ export function ScrollIndicator() {
           style={{
             height: `${scrollProgress}%`,
             bottom: 0,
-            background: 'linear-gradient(to top, rgb(59 130 246), #00E5FF)',
+            background: 'linear-gradient(to top, rgb(37 99 235), rgb(96 165 250))',
           }}
         ></div>
 

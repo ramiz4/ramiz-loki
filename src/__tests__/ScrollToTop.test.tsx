@@ -69,7 +69,7 @@ describe('ScrollToTop', () => {
     const button = screen.getByRole('button', { name: /scroll to top/i });
 
     // Check for hover transition classes
-    expect(button).toHaveClass('hover:bg-[#00cc7d]');
+    expect(button).toHaveClass('hover:bg-primary-700');
     expect(button).toHaveClass('transition-all');
     expect(button).toHaveClass('hover:scale-110');
 
