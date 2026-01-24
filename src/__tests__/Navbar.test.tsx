@@ -80,7 +80,7 @@ describe('Navbar', () => {
 
     // Verify they have the correct styling classes
     expect(aboutLink).toHaveClass('text-sm');
-    expect(aboutLink).toHaveClass('tracking-wider');
+    expect(aboutLink).toHaveClass('font-medium');
     expect(aboutLink).toHaveClass('transition-colors');
     expect(aboutLink).toHaveClass('duration-300');
     expect(aboutLink).toHaveClass('text-gray-300');

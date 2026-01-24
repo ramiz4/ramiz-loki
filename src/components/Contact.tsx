@@ -43,7 +43,7 @@ export function Contact() {
   return (
     <section className="py-24 relative bg-[#1a1a1a] min-h-screen" id="contact">
       {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#001a11] to-[#1a1a1a] z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#1a2533] to-[#1a1a1a] z-0"></div>
 
       {/* Animated grid lines */}
       <div className="absolute inset-0 grid-lines-overlay"></div>
@@ -51,18 +51,15 @@ export function Contact() {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
-          <p className="text-[#00ff9d] font-mono tracking-[0.2em] mb-3">
+          <p className="text-[#00ff9d] text-sm uppercase mb-3 tracking-wider font-medium">
             {t.contact.getInTouch}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold font-mono">
+          <h2 className="text-4xl md:text-5xl font-bold">
             {t.contact.title}{' '}
-            <span className="text-[#00ff9d] relative">
-              {t.contact.me}
-              <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
-            </span>
+            <span className="text-[#00ff9d]">{t.contact.me}</span>
           </h2>
-          <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent my-6"></div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-mono">
+          <div className="h-0.5 w-16 mx-auto bg-[#00ff9d] my-6"></div>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             {t.contact.subtitle}
           </p>
         </div>
@@ -71,13 +68,10 @@ export function Contact() {
         <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
           <form
             onSubmit={handleSubmit}
-            className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            className="bg-white/5 backdrop-blur-xl p-8 rounded-lg border border-white/10 shadow-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
           >
             <h3 className="text-2xl font-bold mb-6 text-white">
-              {t.contact.sendMessage}{' '}
-              <span className="text-[#00ff9d] relative">
-                <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
-              </span>
+              {t.contact.sendMessage}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -149,7 +143,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-[#00ff9d] text-gray-900 rounded-lg font-mono hover:bg-[#00cc7a] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(0,255,157,0.3)] disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                className="w-full px-8 py-4 bg-[#00ff9d] text-white rounded-lg font-medium hover:bg-[#00cc7a] transition-all duration-300 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
               >
                 {isSubmitting ? (
                   <div

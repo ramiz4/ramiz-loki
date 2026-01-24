@@ -22,55 +22,52 @@ export function Header() {
       <div className="flex flex-col items-center justify-center min-h-screen w-full">
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
           <div className="text-center">
-            <p className="text-[#00ff9d] font-mono mb-6 tracking-[0.2em] animate-fade-in-up">
+            <p className="text-[#00ff9d] text-sm uppercase mb-6 tracking-wider font-medium animate-fade-in-up">
               {t.header.welcome}
             </p>
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 font-mono tracking-tight animate-fade-in-up animation-delay-200">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-fade-in-up animation-delay-200">
               <span className="text-white">I'm </span>
-              <span className="text-[#00ff9d] relative inline-block">
-                {t.header.name}
-                <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
-              </span>
+              <span className="text-[#00ff9d]">{t.header.name}</span>
             </h1>
-            <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent mb-6 animate-fade-in-up animation-delay-300"></div>
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-mono animate-fade-in-up animation-delay-400">
+            <div className="h-0.5 w-16 mx-auto bg-[#00ff9d] mb-6 animate-fade-in-up animation-delay-300"></div>
+            <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-400">
               {t.header.title}
             </p>
-            <div className="flex items-center justify-center gap-6 mb-12 animate-fade-in-up animation-delay-500">
+            <div className="flex items-center justify-center gap-4 mb-12 animate-fade-in-up animation-delay-500">
               <a
                 href="https://www.linkedin.com/in/ramiz-loki/"
-                className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                className="p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-[#00ff9d] transition-all duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit my LinkedIn profile"
               >
                 <LinkedinIcon
                   size={20}
-                  className="text-[#00ff9d] transition-transform"
+                  className="text-gray-300 hover:text-[#00ff9d] transition-colors"
                 />
               </a>
               <a
                 href="https://github.com/ramiz4"
-                className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                className="p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-[#00ff9d] transition-all duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit my GitHub profile"
               >
                 <SiGithub
                   size={20}
-                  className="text-[#00ff9d] transition-transform"
+                  className="text-gray-300 hover:text-[#00ff9d] transition-colors"
                 />
               </a>
               <a
                 href="https://stackoverflow.com/users/3466032/ramiz4"
-                className="p-4 bg-transparent border border-[#00ff9d]/20 rounded-full hover:bg-[#00ff9d]/10 transition-all duration-300 group hover:scale-110"
+                className="p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-[#00ff9d] transition-all duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit my Stack Overflow profile"
               >
                 <SiStackoverflow
                   size={20}
-                  className="text-[#00ff9d] transition-transform"
+                  className="text-gray-300 hover:text-[#00ff9d] transition-colors"
                 />
               </a>
             </div>
@@ -78,14 +75,14 @@ export function Header() {
               <a
                 href="#contact"
                 onClick={e => scrollToSection(e, 'contact')}
-                className="px-8 py-3 bg-[#00ff9d] text-gray-900 rounded-full font-mono hover:bg-[#00cc7a] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,157,0.3)]"
+                className="px-8 py-3 bg-[#00ff9d] text-white rounded-md font-medium hover:bg-[#00cc7a] transition-all duration-300 shadow-lg"
               >
                 {t.header.contactMe}
               </a>
               <a
                 href="#skills"
                 onClick={e => scrollToSection(e, 'skills')}
-                className="px-8 py-3 border border-[#00ff9d] text-[#00ff9d] rounded-full font-mono hover:bg-[#00ff9d]/10 transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 border border-white/20 text-gray-200 rounded-md font-medium hover:bg-white/5 transition-all duration-300"
               >
                 {t.header.viewSkills}
               </a>

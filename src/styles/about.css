@@ -8,7 +8,7 @@
   content: '';
   position: absolute;
   inset: -4px;
-  background: linear-gradient(45deg, #00ff9d, #00cc7d, #333);
+  background: linear-gradient(45deg, #3b82f6, #00cc7d, #333);
   border-radius: 1rem;
   z-index: -2;
   filter: blur(8px);
@@ -44,8 +44,8 @@
 
 .about-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 40px 0 rgba(0, 255, 157, 0.2);
-  border: 1px solid rgba(0, 255, 157, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -57,7 +57,7 @@
   content: '';
   position: absolute;
   inset: -4px;
-  background: linear-gradient(45deg, var(--card-color, #00ff9d), transparent);
+  background: linear-gradient(45deg, var(--card-color, #3b82f6), transparent);
   border-radius: 1rem;
   z-index: -2;
   filter: blur(8px);
@@ -108,7 +108,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: rgba(0, 255, 157, 0.3);
+  background-color: rgba(59, 130, 246, 0.3);
   pointer-events: none;
 }
 
