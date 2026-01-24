@@ -22,7 +22,7 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 
 ### Prerequisites
 
-- Node.js (v16 or higher required)
+- Node.js (v18 or higher required)
 - pnpm (v10.11.0 - automatically used via packageManager field)
 
 ### Installation
