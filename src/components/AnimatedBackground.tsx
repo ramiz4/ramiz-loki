@@ -178,7 +178,7 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [mouseSpeed]); // Dependencies correctly listed
+  }, [mouseSpeed]); // mouseSpeed is the only state dependency; refs are accessed directly in the animation loop
 
   return (
     <>
