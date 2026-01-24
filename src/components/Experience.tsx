@@ -47,7 +47,9 @@ export function Experience() {
       period: '03/2024 - 09/2025',
       title: 'Full Stack Software Engineer',
       company: 'FINNOFLEET Schweiz, Zürich, Bern, Sursee',
-      details: [],
+      details: [
+        'Developed and maintained full-stack microservice-based applications using Java and Spring Boot across multiple FINNOFLEET locations in Switzerland.',
+      ],
       color: '#00FF9D',
       tags: ['Java', 'Spring Boot', 'Full Stack', 'Microservices'],
     },
