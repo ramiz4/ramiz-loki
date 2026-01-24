@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import * as MobileMenuModule from '../components/MobileMenu';
 import { Navbar } from '../components/Navbar';
 
 // Mock navigationUtils
@@ -176,17 +177,10 @@ describe('Navbar', () => {
     // we'll just test the result of clicking, which should toggle the visibility
     // of a div in the DOM
 
-    // Mock implementation of MobileMenu to make it easier to test
-    jest
-      .spyOn(require('../components/MobileMenu'), 'MobileMenu')
-      .mockImplementation(() => (
-        <div data-testid="mobile-menu-mock">Mobile Menu Content</div>
-      ));
-
     renderNavbar();
 
     // Mobile menu should initially be hidden
-    expect(screen.queryByTestId('mobile-menu-mock')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('mobile-menu')).not.toBeInTheDocument();
 
     // Click the button
     const menuButton = screen.getByRole('button');
