@@ -1,5 +1,4 @@
 /* eslint-env jest, node */
-/* eslint-disable no-undef */
 // Mock implementation for canvas module
 const createCanvasMock = () => {
   return {
