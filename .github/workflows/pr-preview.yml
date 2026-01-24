@@ -119,15 +119,16 @@ jobs:
         with:
           ref: gh-pages
           fetch-depth: 0
-        continue-on-error: true
       
       - name: Remove PR preview directory
         run: |
+          # Configure git
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          
           # Check if PR preview directory exists
           if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
             rm -rf pr-${{ github.event.pull_request.number }}
-            git config user.name github-actions[bot]
-            git config user.email github-actions[bot]@users.noreply.github.com
             git add .
             if ! git diff --staged --quiet; then
               git commit -m "Remove PR #${{ github.event.pull_request.number }} preview"
