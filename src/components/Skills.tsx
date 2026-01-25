@@ -194,7 +194,9 @@ export function Skills() {
                       ? 'bg-[#00ff9d] text-white shadow-lg'
                       : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
-                aria-pressed={activeCategory === category.id}
+                aria-current={
+                  activeCategory === category.id ? 'true' : undefined
+                }
                 aria-label={`Filter skills by ${category.name}`}
               >
                 <Icon size={16} className={`mr-2`} aria-hidden="true" />
