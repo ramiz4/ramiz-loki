@@ -33,14 +33,14 @@
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.17.30",
+    "@types/node": "^25.0.10",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "latest",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.1.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -52,7 +52,6 @@
     "gh-pages": "^6.3.0",
     "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
-    "intersection-observer": "^0.12.2",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^16.2.7",
@@ -61,7 +60,7 @@
     "tailwindcss": "^3.4.17",
     "ts-jest": "^29.4.6",
     "typescript": "^5.9.3",
-    "vite": "^6.3.5"
+    "vite": "^7.3.1"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
