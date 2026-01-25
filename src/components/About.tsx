@@ -155,6 +155,7 @@ export function About() {
                 onClick={() => setIsReferenceExpanded(!isReferenceExpanded)}
                 className="ml-4 p-2 rounded-lg bg-[#00ff9d]/10 hover:bg-[#00ff9d]/20 transition-colors flex-shrink-0"
                 aria-expanded={isReferenceExpanded}
+                aria-controls="ai-reference-content"
                 aria-label={
                   isReferenceExpanded ? t.about.readLess : t.about.readMore
                 }
@@ -169,9 +170,13 @@ export function About() {
             </div>
 
             <div
+              id="ai-reference-content"
+              role="region"
+              aria-labelledby="ai-reference-title"
+              aria-hidden={!isReferenceExpanded}
               className={`overflow-hidden transition-all duration-500 ease-in-out ${
                 isReferenceExpanded
-                  ? 'max-h-[2000px] opacity-100'
+                  ? 'max-h-[100rem] opacity-100'
                   : 'max-h-0 opacity-0'
               }`}
             >
@@ -187,6 +192,8 @@ export function About() {
               <button
                 onClick={() => setIsReferenceExpanded(true)}
                 className="mt-4 text-[#00ff9d] hover:text-[#00cc7d] transition-colors text-sm font-medium"
+                aria-controls="ai-reference-content"
+                aria-label={t.about.readMore}
               >
                 {t.about.readMore} →
               </button>

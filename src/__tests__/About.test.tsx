@@ -149,19 +149,26 @@ describe('About', () => {
   });
 
   test('AI reference is initially collapsed', () => {
-    const { container } = render(<About />);
+    render(<About />);
 
     // Check for text button
     const textButton = screen.getByText('Read More →');
     expect(textButton).toBeInTheDocument();
 
-    // Reference content container should have max-h-0 (collapsed)
-    const contentContainer = container.querySelector('.max-h-0');
-    expect(contentContainer).toBeInTheDocument();
+    // Check chevron button is not expanded
+    const chevronButton = screen.getByRole('button', {
+      name: /read more/i,
+      expanded: false,
+    });
+    expect(chevronButton).toBeInTheDocument();
+
+    // Content should be aria-hidden
+    const content = screen.getByLabelText('AI Reference');
+    expect(content).toHaveAttribute('aria-hidden', 'true');
   });
 
   test('AI reference expands when clicking chevron button', () => {
-    const { container } = render(<About />);
+    render(<About />);
 
     const expandButton = screen.getByRole('button', {
       name: /read more/i,
@@ -172,9 +179,19 @@ describe('About', () => {
       expandButton.click();
     });
 
-    // Content should now be visible
-    const content = container.querySelector('.max-h-\\[2000px\\]');
-    expect(content).toBeInTheDocument();
+    // Button should now be expanded
+    expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+
+    // Content should no longer be aria-hidden
+    const content = screen.getByLabelText('AI Reference');
+    expect(content).toHaveAttribute('aria-hidden', 'false');
+
+    // Paragraph content should be visible
+    expect(
+      screen.getByText(
+        /Ramiz Loki is an experienced Full-Stack Software Engineer/,
+      ),
+    ).toBeInTheDocument();
   });
 
   test('AI reference collapses when clicking chevron button again', () => {
@@ -190,6 +207,9 @@ describe('About', () => {
       expandButton.click();
     });
 
+    // Verify it's expanded
+    expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+
     // Now collapse
     const collapseButton = screen.getByRole('button', {
       name: /read less/i,
@@ -200,13 +220,12 @@ describe('About', () => {
       collapseButton.click();
     });
 
-    // Should be collapsed again
-    expect(
-      screen.getByRole('button', {
-        name: /read more/i,
-        expanded: false,
-      }),
-    ).toBeInTheDocument();
+    // Should be collapsed again - check aria-expanded
+    expect(collapseButton).toHaveAttribute('aria-expanded', 'false');
+
+    // Content should be aria-hidden again
+    const content = screen.getByLabelText('AI Reference');
+    expect(content).toHaveAttribute('aria-hidden', 'true');
   });
 
   test('AI reference shows all paragraphs when expanded', () => {
