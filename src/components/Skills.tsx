@@ -188,21 +188,15 @@ export function Skills() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`relative overflow-hidden flex items-center px-6 py-3 rounded-full font-medium text-sm transition-all duration-500
+                className={`relative overflow-hidden flex items-center px-6 py-3 rounded-md font-medium text-sm transition-all duration-300
                   ${
                     activeCategory === category.id
-                      ? 'bg-[#00ff9d] text-gray-900 shadow-[0_0_15px_rgba(0,255,157,0.4)]'
+                      ? 'bg-[#00ff9d] text-white shadow-lg'
                       : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
               >
-                <Icon
-                  size={16}
-                  className={`mr-2 transition-transform duration-300 ${activeCategory === category.id ? 'rotate-0' : 'rotate-0'}`}
-                />
+                <Icon size={16} className={`mr-2`} />
                 {category.name}
-                {activeCategory === category.id && (
-                  <span className="absolute inset-0 bg-white opacity-20 animate-pulse-subtle"></span>
-                )}
               </button>
             );
           })}
@@ -213,9 +207,8 @@ export function Skills() {
           {filteredSkills.map((skill, index) => (
             <div
               key={index}
-              className="group bg-white/5 backdrop-blur-xl p-6 rounded-xl shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-[#00ff9d]/10"
+              className="group bg-white/5 backdrop-blur-xl p-6 rounded-lg shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all duration-300"
               style={{
-                transition: 'all 0.4s cubic-bezier(0.1, 0.7, 0.1, 1)',
                 animationDelay: `${index * 0.1}s`,
                 opacity: isInView ? 1 : 0,
                 transform: isInView ? 'translateY(0)' : 'translateY(20px)',
@@ -224,7 +217,7 @@ export function Skills() {
               <div className="flex flex-col items-center space-y-4">
                 {/* Icon with animated ring */}
                 <div className="relative h-20 w-20 flex items-center justify-center mb-2">
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-[#00ff9d]/30 transition-all duration-500"></div>
+                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-[#00ff9d]/30 transition-all duration-300"></div>
                   <div
                     className="absolute inset-0 rounded-full"
                     style={{
@@ -234,11 +227,11 @@ export function Skills() {
                       transition: 'all 1s ease-out',
                     }}
                   ></div>
-                  <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-500">
+                  <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-300">
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-10 h-10 transition-transform duration-500 group-hover:scale-110"
+                      className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
                 </div>

@@ -25,7 +25,7 @@ export function Footer() {
               Ramiz{' '}
               <span className="text-[#00ff9d] relative">
                 Loki
-                <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
+                <span className="absolute -inset-1 bg-[#00ff9d]/20 blur-xl"></span>
               </span>
             </h3>
             <p className="text-gray-300 mb-6">{t.footer.tagline}</p>
@@ -63,7 +63,7 @@ export function Footer() {
             <h3 className="text-2xl font-bold mb-6 text-white">
               {t.footer.contactInfo}{' '}
               <span className="text-[#00ff9d] relative">
-                <span className="absolute -inset-1 bg-[#00ff9d20] blur-xl"></span>
+                <span className="absolute -inset-1 bg-[#00ff9d]/20 blur-xl"></span>
               </span>
             </h3>
             <div className="space-y-6">
