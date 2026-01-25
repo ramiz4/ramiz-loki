@@ -141,7 +141,10 @@ export function About() {
           <div className="p-8">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3
+                  id="ai-reference-title"
+                  className="text-2xl font-bold text-white mb-2"
+                >
                   {t.about.aiReferenceTitle}
                 </h3>
                 <p className="text-sm text-gray-400 italic">
