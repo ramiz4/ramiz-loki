@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import 'intersection-observer';
 import { TextEncoder } from 'util';
 
 // Ensure NODE_ENV is set to 'test'

@@ -10,33 +10,14 @@ jest.mock('../components/ScrollIndicator', () => ({
 }));
 
 describe('Header', () => {
-  // Store original window.location implementation
-  const originalLocation = window.location;
-
   beforeEach(() => {
-    // Mock window.location.hash setter
-    Object.defineProperty(window, 'location', {
-      configurable: true,
-      value: {
-        ...originalLocation,
-        // Add a custom hash setter that includes the # character
-        set hash(value) {
-          this._hash = value.startsWith('#') ? value : `#${value}`;
-        },
-        get hash() {
-          return this._hash || '';
-        },
-        _hash: '',
-      },
-    });
+    // Reset hash before each test
+    window.history.pushState(null, '', window.location.pathname);
   });
 
   afterEach(() => {
-    // Restore original window.location
-    Object.defineProperty(window, 'location', {
-      configurable: true,
-      value: originalLocation,
-    });
+    // Clean up hash after each test
+    window.history.pushState(null, '', window.location.pathname);
   });
 
   test('renders hero section with correct name and title', () => {
