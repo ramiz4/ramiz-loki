@@ -194,4 +194,56 @@ describe('Skills', () => {
     // Verify unobserve was called during cleanup
     expect(unobserveMock).toHaveBeenCalled();
   });
+
+  test('filter buttons have correct ARIA attributes', () => {
+    render(<Skills />);
+
+    // Get filter buttons
+    const allButton = screen.getByText('All').closest('button');
+    const frontendButton = screen.getByText('Frontend').closest('button');
+
+    // Check that buttons have aria-label
+    expect(allButton).toHaveAttribute('aria-label', 'Filter skills by All');
+    expect(frontendButton).toHaveAttribute(
+      'aria-label',
+      'Filter skills by Frontend',
+    );
+
+    // Check that active button has aria-current="true"
+    expect(allButton).toHaveAttribute('aria-current', 'true');
+    expect(frontendButton).not.toHaveAttribute('aria-current');
+
+    // Click frontend button and check aria-current updates
+    fireEvent.click(frontendButton!);
+    expect(frontendButton).toHaveAttribute('aria-current', 'true');
+    expect(allButton).not.toHaveAttribute('aria-current');
+  });
+
+  test('skills grid has proper list semantics', () => {
+    const { container } = render(<Skills />);
+
+    // Check that skills grid has role="list"
+    const skillsGrid = container.querySelector('[role="list"]');
+    expect(skillsGrid).toBeInTheDocument();
+    expect(skillsGrid).toHaveAttribute('aria-label', 'All skills');
+
+    // Check that skill items have role="listitem"
+    const skillItems = container.querySelectorAll('[role="listitem"]');
+    expect(skillItems.length).toBeGreaterThan(0);
+  });
+
+  test('progress bars have correct ARIA attributes', () => {
+    const { container } = render(<Skills />);
+
+    // Find a progress bar
+    const progressBars = container.querySelectorAll('[role="progressbar"]');
+    expect(progressBars.length).toBeGreaterThan(0);
+
+    // Check first progress bar has all required ARIA attributes
+    const firstProgressBar = progressBars[0];
+    expect(firstProgressBar).toHaveAttribute('aria-label');
+    expect(firstProgressBar).toHaveAttribute('aria-valuenow');
+    expect(firstProgressBar).toHaveAttribute('aria-valuemin', '0');
+    expect(firstProgressBar).toHaveAttribute('aria-valuemax', '100');
+  });
 });

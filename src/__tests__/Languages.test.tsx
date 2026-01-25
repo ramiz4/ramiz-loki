@@ -138,4 +138,30 @@ describe('Languages', () => {
     // Should have cleaned up by unobserving
     expect(mockObserver.unobserve).toHaveBeenCalled();
   });
+
+  test('progress bars have correct ARIA attributes', () => {
+    const { container } = render(<Languages />);
+
+    // Find all progress bars with role="progressbar"
+    const progressBars = container.querySelectorAll('[role="progressbar"]');
+    expect(progressBars.length).toBe(3); // German, English, Albanian
+
+    // Check first progress bar (German)
+    const germanProgressBar = progressBars[0];
+    expect(germanProgressBar).toHaveAttribute(
+      'aria-label',
+      'German proficiency',
+    );
+    expect(germanProgressBar).toHaveAttribute('aria-valuenow', '100');
+    expect(germanProgressBar).toHaveAttribute('aria-valuemin', '0');
+    expect(germanProgressBar).toHaveAttribute('aria-valuemax', '100');
+
+    // Check second progress bar (English)
+    const englishProgressBar = progressBars[1];
+    expect(englishProgressBar).toHaveAttribute(
+      'aria-label',
+      'English proficiency',
+    );
+    expect(englishProgressBar).toHaveAttribute('aria-valuenow', '75');
+  });
 });

@@ -96,4 +96,33 @@ describe('ScrollIndicator', () => {
       expect.any(Function),
     );
   });
+
+  test('has proper ARIA attributes for progressbar', () => {
+    const { container } = render(<ScrollIndicator />);
+
+    // Find the progress bar element with role="progressbar"
+    const progressBar = container.querySelector('[role="progressbar"]');
+    expect(progressBar).toBeInTheDocument();
+
+    // Check ARIA attributes
+    expect(progressBar).toHaveAttribute('aria-label', 'Page scroll progress');
+    expect(progressBar).toHaveAttribute('aria-valuenow', '0');
+    expect(progressBar).toHaveAttribute('aria-valuemin', '0');
+    expect(progressBar).toHaveAttribute('aria-valuemax', '100');
+
+    // Simulate scrolling and check updated aria-valuenow
+    window.scrollY = 500; // 50% of (scrollHeight - innerHeight)
+    fireEvent.scroll(window);
+
+    expect(progressBar).toHaveAttribute('aria-valuenow', '50');
+  });
+
+  test('container has proper aria-label', () => {
+    const { container } = render(<ScrollIndicator />);
+
+    const mainContainer = container.querySelector(
+      'div[aria-label="Page scroll progress indicator"]',
+    );
+    expect(mainContainer).toBeInTheDocument();
+  });
 });
