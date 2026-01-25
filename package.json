@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://ramiz4.github.io/ramiz-loki",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.17.0"
   },
   "packageManager": "pnpm@10.11.0",
   "scripts": {
@@ -64,11 +64,11 @@
     "vite": "^6.3.5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{css,md,json}": [
+    "**/*.{css,md,json}": [
       "prettier --write"
     ]
   },
