@@ -131,11 +131,11 @@ export function Skills() {
       color: '#777BB4',
     },
     {
-      name: 'MongoDB',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-      category: 'database',
-      level: 82,
-      color: '#47A248',
+      name: 'Java',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+      category: 'backend',
+      level: 85,
+      color: '#007396',
     },
     {
       name: 'PostgreSQL',

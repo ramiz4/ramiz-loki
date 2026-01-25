@@ -37,7 +37,7 @@ describe('Skills', () => {
     // Initially all skills should be visible
     expect(screen.getByText('JavaScript')).toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
-    expect(screen.getByText('MongoDB')).toBeInTheDocument();
+    expect(screen.getByText('Java')).toBeInTheDocument();
 
     // Click on Frontend category
     fireEvent.click(screen.getByText('Frontend'));
@@ -46,7 +46,7 @@ describe('Skills', () => {
     expect(screen.getByText('JavaScript')).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
     expect(screen.queryByText('Node.js')).not.toBeInTheDocument();
-    expect(screen.queryByText('MongoDB')).not.toBeInTheDocument();
+    expect(screen.queryByText('Java')).not.toBeInTheDocument();
 
     // Click on Backend category
     fireEvent.click(screen.getByText('Backend'));
@@ -55,12 +55,13 @@ describe('Skills', () => {
     expect(screen.queryByText('JavaScript')).not.toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
     expect(screen.getByText('Python')).toBeInTheDocument();
+    expect(screen.getByText('Java')).toBeInTheDocument();
 
     // Click on All to show everything again
     fireEvent.click(screen.getByText('All'));
     expect(screen.getByText('JavaScript')).toBeInTheDocument();
     expect(screen.getByText('Node.js')).toBeInTheDocument();
-    expect(screen.getByText('MongoDB')).toBeInTheDocument();
+    expect(screen.getByText('Java')).toBeInTheDocument();
   });
 
   test('displays skill levels correctly', () => {
