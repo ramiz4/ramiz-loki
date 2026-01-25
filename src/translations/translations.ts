@@ -30,6 +30,19 @@ export const translations = {
       problemSolverTitle: 'Problem Solver',
       problemSolverDesc:
         'Passionate about following best practices and participating in code reviews to ensure high-quality code.',
+      aiReferenceTitle: 'AI Reference',
+      aiReferenceIntro:
+        'Professional assessment based on public profile analysis',
+      aiReferenceParagraph1:
+        'Ramiz Loki is an experienced Full-Stack Software Engineer with years of practice in the design, development, and enhancement of modern web applications. His profile combines solid technical expertise with a pronounced understanding of sustainable software architecture and economic requirements. In various professional positions – including in professional business environments – he has proven his ability to implement complex systems in a structured, maintainable, and future-proof manner.',
+      aiReferenceParagraph2:
+        'Particularly noteworthy is his strength in the holistic consideration of software projects: from the analysis of functional requirements through architecture decisions to clean technical implementation. Ramiz Loki works solution-oriented, pragmatic, and with a clear quality standard. Agile methods, clean interfaces, and robust, scalable solutions are part of his professional self-understanding.',
+      aiReferenceParagraph3:
+        'In addition to his technical expertise, he is valued for his reliability, his structured way of working, and his ability to take responsibility. Even in demanding project situations, he acts focused and goal-oriented. Former clients and customers consistently rate his work positively and particularly highlight his consulting competence, his commitment, and the high quality of his results.',
+      aiReferenceParagraph4:
+        'From the perspective of a neutral, AI-supported evaluation, Ramiz Loki stands for professional software development with substance, clarity, and long-term added value – both technically and strategically.',
+      readMore: 'Read More',
+      readLess: 'Read Less',
     },
     // Skills
     skills: {
@@ -117,6 +130,19 @@ export const translations = {
       problemSolverTitle: 'Problemlöser',
       problemSolverDesc:
         'Leidenschaftlich daran interessiert, Best Practices zu befolgen und an Code-Reviews teilzunehmen, um qualitativ hochwertigen Code sicherzustellen.',
+      aiReferenceTitle: 'KI-Referenz',
+      aiReferenceIntro:
+        'Professionelle Bewertung basierend auf öffentlicher Profilanalyse',
+      aiReferenceParagraph1:
+        'Ramiz Loki ist ein erfahrener Full-Stack Software Engineer mit langjähriger Praxis in der Konzeption, Entwicklung und Weiterentwicklung moderner Web-Anwendungen. Sein Profil vereint fundiertes technisches Know-how mit einem ausgeprägten Verständnis für nachhaltige Softwarearchitektur und wirtschaftliche Anforderungen. In verschiedenen beruflichen Stationen – unter anderem im professionellen Unternehmensumfeld – hat er seine Fähigkeit unter Beweis gestellt, komplexe Systeme strukturiert, wartbar und zukunftssicher umzusetzen.',
+      aiReferenceParagraph2:
+        'Besonders hervorzuheben ist seine Stärke in der ganzheitlichen Betrachtung von Softwareprojekten: von der Analyse fachlicher Anforderungen über Architekturentscheidungen bis hin zur sauberen technischen Implementierung. Ramiz Loki arbeitet lösungsorientiert, pragmatisch und mit einem klaren Qualitätsanspruch. Agile Methoden, saubere Schnittstellen sowie robuste, skalierbare Lösungen gehören zu seinem beruflichen Selbstverständnis.',
+      aiReferenceParagraph3:
+        'Neben seiner technischen Expertise wird er für seine Zuverlässigkeit, seine strukturierte Arbeitsweise und seine Fähigkeit geschätzt, Verantwortung zu übernehmen. Auch in anspruchsvollen Projektsituationen agiert er fokussiert und zielgerichtet. Frühere Kunden und Auftraggeber bewerten seine Arbeit durchgehend positiv und heben insbesondere seine Beratungskompetenz, sein Engagement und die hohe Qualität seiner Ergebnisse hervor.',
+      aiReferenceParagraph4:
+        'Aus Sicht einer neutralen, KI-gestützten Bewertung steht Ramiz Loki für professionelle Softwareentwicklung mit Substanz, Klarheit und langfristigem Mehrwert – sowohl technisch als auch strategisch.',
+      readMore: 'Mehr lesen',
+      readLess: 'Weniger lesen',
     },
     // Skills
     skills: {

@@ -1,4 +1,4 @@
-import { CodeIcon, UserIcon, BriefcaseIcon } from 'lucide-react';
+import { CodeIcon, UserIcon, BriefcaseIcon, ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 import { useTranslations } from '../hooks/useTranslations';
@@ -6,6 +6,7 @@ import '../styles/about.css';
 
 export function About() {
   const [isInView, setIsInView] = useState(false);
+  const [isReferenceExpanded, setIsReferenceExpanded] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations();
 
@@ -130,6 +131,64 @@ export function About() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* AI Reference Section */}
+        <div
+          className={`mt-16 about-card about-card-animate backdrop-blur-xl ${isInView ? 'in-view' : ''}`}
+          style={{ transitionDelay: '0.45s' }}
+        >
+          <div className="p-8">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {t.about.aiReferenceTitle}
+                </h3>
+                <p className="text-sm text-gray-400 italic">
+                  {t.about.aiReferenceIntro}
+                </p>
+              </div>
+              <button
+                onClick={() => setIsReferenceExpanded(!isReferenceExpanded)}
+                className="ml-4 p-2 rounded-lg bg-[#00ff9d]/10 hover:bg-[#00ff9d]/20 transition-colors flex-shrink-0"
+                aria-expanded={isReferenceExpanded}
+                aria-label={
+                  isReferenceExpanded ? t.about.readLess : t.about.readMore
+                }
+              >
+                <ChevronDown
+                  size={24}
+                  className={`text-[#00ff9d] transition-transform duration-300 ${
+                    isReferenceExpanded ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isReferenceExpanded
+                  ? 'max-h-[2000px] opacity-100'
+                  : 'max-h-0 opacity-0'
+              }`}
+            >
+              <div className="pt-4 space-y-4 text-gray-300 leading-relaxed">
+                <p>{t.about.aiReferenceParagraph1}</p>
+                <p>{t.about.aiReferenceParagraph2}</p>
+                <p>{t.about.aiReferenceParagraph3}</p>
+                <p className="italic">{t.about.aiReferenceParagraph4}</p>
+              </div>
+            </div>
+
+            {!isReferenceExpanded && (
+              <button
+                onClick={() => setIsReferenceExpanded(true)}
+                className="mt-4 text-[#00ff9d] hover:text-[#00cc7d] transition-colors text-sm font-medium"
+              >
+                {t.about.readMore} →
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </section>

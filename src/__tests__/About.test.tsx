@@ -136,4 +136,103 @@ describe('About', () => {
     // Verify unobserve was called during cleanup
     expect(unobserveMock).toHaveBeenCalled();
   });
+
+  test('renders AI reference section', () => {
+    render(<About />);
+
+    expect(screen.getByText('AI Reference')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Professional assessment based on public profile analysis',
+      ),
+    ).toBeInTheDocument();
+  });
+
+  test('AI reference is initially collapsed', () => {
+    const { container } = render(<About />);
+
+    // Check for text button
+    const textButton = screen.getByText('Read More →');
+    expect(textButton).toBeInTheDocument();
+
+    // Reference content container should have max-h-0 (collapsed)
+    const contentContainer = container.querySelector('.max-h-0');
+    expect(contentContainer).toBeInTheDocument();
+  });
+
+  test('AI reference expands when clicking chevron button', () => {
+    const { container } = render(<About />);
+
+    const expandButton = screen.getByRole('button', {
+      name: /read more/i,
+      expanded: false,
+    });
+
+    act(() => {
+      expandButton.click();
+    });
+
+    // Content should now be visible
+    const content = container.querySelector('.max-h-\\[2000px\\]');
+    expect(content).toBeInTheDocument();
+  });
+
+  test('AI reference collapses when clicking chevron button again', () => {
+    render(<About />);
+
+    const expandButton = screen.getByRole('button', {
+      name: /read more/i,
+      expanded: false,
+    });
+
+    // Expand first
+    act(() => {
+      expandButton.click();
+    });
+
+    // Now collapse
+    const collapseButton = screen.getByRole('button', {
+      name: /read less/i,
+      expanded: true,
+    });
+
+    act(() => {
+      collapseButton.click();
+    });
+
+    // Should be collapsed again
+    expect(
+      screen.getByRole('button', {
+        name: /read more/i,
+        expanded: false,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  test('AI reference shows all paragraphs when expanded', () => {
+    render(<About />);
+
+    // Find and click the text button (it's more specific)
+    const textButton = screen.getByText('Read More →');
+
+    act(() => {
+      textButton.click();
+    });
+
+    // Check for content from all paragraphs
+    expect(
+      screen.getByText(
+        /Ramiz Loki is an experienced Full-Stack Software Engineer/,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Particularly noteworthy is his strength/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/In addition to his technical expertise/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/From the perspective of a neutral/),
+    ).toBeInTheDocument();
+  });
 });
