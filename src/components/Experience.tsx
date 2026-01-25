@@ -181,195 +181,224 @@ export function Experience() {
           {/* Timeline center line */}
           <div
             className={`absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-[#00E5FF] via-[#00FF9D] to-[#8C43FF] transform -translate-x-1/2 rounded-full transition-all duration-2000 ${isInView ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} origin-top`}
+            aria-hidden="true"
           ></div>
 
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className={`relative flex items-start mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} transition-all duration-700 ${isInView ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}
-              style={{ transitionDelay: `${300 + index * 150}ms` }}
-            >
-              {/* Timeline node */}
-              <div
-                className={`absolute left-1/2 w-10 h-10 bg-[#121212] rounded-full border-4 flex items-center justify-center z-10 transform -translate-x-1/2 transition-all duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
-                style={{
-                  borderColor: exp.color,
-                  transitionDelay: `${500 + index * 100}ms`,
-                }}
+          <ol className="list-none" aria-label="Work experience timeline">
+            {experiences.map((exp, index) => (
+              <li
+                key={index}
+                className={`relative flex items-start mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} transition-all duration-700 ${isInView ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}
+                style={{ transitionDelay: `${300 + index * 150}ms` }}
               >
-                <BriefcaseIcon size={16} style={{ color: exp.color }} />
-              </div>
-
-              {/* Content card */}
-              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
+                {/* Timeline node */}
                 <div
-                  className={`bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500 ${isInView ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform ' + (index % 2 === 0 ? '-translate-x-10' : 'translate-x-10')}`}
-                  style={{ transitionDelay: `${600 + index * 100}ms` }}
+                  className={`absolute left-1/2 w-10 h-10 bg-[#121212] rounded-full border-4 flex items-center justify-center z-10 transform -translate-x-1/2 transition-all duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                  style={{
+                    borderColor: exp.color,
+                    transitionDelay: `${500 + index * 100}ms`,
+                  }}
+                  aria-hidden="true"
                 >
-                  {/* Date badge */}
-                  <div
-                    className="inline-flex items-center rounded-full px-4 py-1 mb-4 text-sm"
-                    style={{
-                      backgroundColor: `${exp.color}20`,
-                      color: exp.color,
-                    }}
-                  >
-                    <CalendarIcon size={14} className="mr-2" />
-                    {translatePeriod(exp.period)}
-                  </div>
-
-                  {/* Title & company */}
-                  <h3
-                    className="text-xl md:text-2xl font-bold mb-2"
-                    style={{ color: exp.color }}
-                  >
-                    {exp.title}
-                  </h3>
-                  <div className="flex items-center mb-4">
-                    <MapPinIcon size={16} className="text-gray-400 mr-2" />
-                    <span className="text-gray-300">{exp.company}</span>
-                  </div>
-
-                  {/* Skills tags */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {exp.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 rounded-full text-xs font-medium"
-                        style={{
-                          backgroundColor: `${exp.color}15`,
-                          color: exp.color,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Details */}
-                  {exp.details.length > 0 && (
-                    <ul className="space-y-3">
-                      {exp.details.map((detail, i) => (
-                        <li key={i} className="flex items-start">
-                          <div
-                            className="p-1 rounded-full mr-3 mt-1 flex-shrink-0"
-                            style={{ backgroundColor: `${exp.color}20` }}
-                          >
-                            <CheckIcon size={12} style={{ color: exp.color }} />
-                          </div>
-                          <span className="text-gray-300 text-sm leading-relaxed">
-                            {detail}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {exp.details.length === 0 &&
-                    exp.period.endsWith('Present') && (
-                      <div className="text-gray-400 italic">
-                        {t.experience.currentlyWorking}
-                      </div>
-                    )}
+                  <BriefcaseIcon size={16} style={{ color: exp.color }} />
                 </div>
-              </div>
 
-              {/* Empty space for the opposite side */}
-              <div className="w-5/12"></div>
-            </div>
-          ))}
+                {/* Content card */}
+                <div
+                  className={`w-5/12 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}
+                >
+                  <div
+                    className={`bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 shadow-lg hover:shadow-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-500 ${isInView ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform ' + (index % 2 === 0 ? '-translate-x-10' : 'translate-x-10')}`}
+                    style={{ transitionDelay: `${600 + index * 100}ms` }}
+                  >
+                    {/* Date badge */}
+                    <div
+                      className="inline-flex items-center rounded-full px-4 py-1 mb-4 text-sm"
+                      style={{
+                        backgroundColor: `${exp.color}20`,
+                        color: exp.color,
+                      }}
+                    >
+                      <CalendarIcon size={14} className="mr-2" />
+                      {translatePeriod(exp.period)}
+                    </div>
+
+                    {/* Title & company */}
+                    <h3
+                      className="text-xl md:text-2xl font-bold mb-2"
+                      style={{ color: exp.color }}
+                    >
+                      {exp.title}
+                    </h3>
+                    <div className="flex items-center mb-4">
+                      <MapPinIcon size={16} className="text-gray-400 mr-2" />
+                      <span className="text-gray-300">{exp.company}</span>
+                    </div>
+
+                    {/* Skills tags */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {exp.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 rounded-full text-xs font-medium"
+                          style={{
+                            backgroundColor: `${exp.color}15`,
+                            color: exp.color,
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Details */}
+                    {exp.details.length > 0 && (
+                      <ul className="space-y-3">
+                        {exp.details.map((detail, i) => (
+                          <li key={i} className="flex items-start">
+                            <div
+                              className="p-1 rounded-full mr-3 mt-1 flex-shrink-0"
+                              style={{ backgroundColor: `${exp.color}20` }}
+                            >
+                              <CheckIcon
+                                size={12}
+                                style={{ color: exp.color }}
+                              />
+                            </div>
+                            <span className="text-gray-300 text-sm leading-relaxed">
+                              {detail}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {exp.details.length === 0 &&
+                      exp.period.endsWith('Present') && (
+                        <div className="text-gray-400 italic">
+                          {t.experience.currentlyWorking}
+                        </div>
+                      )}
+                  </div>
+                </div>
+
+                {/* Empty space for the opposite side */}
+                <div className="w-5/12"></div>
+              </li>
+            ))}
+          </ol>
 
           {/* Final node */}
-          <div className="absolute bottom-0 left-1/2 w-6 h-6 bg-[#8C43FF] rounded-full transform -translate-x-1/2 translate-y-3"></div>
+          <div
+            className="absolute bottom-0 left-1/2 w-6 h-6 bg-[#8C43FF] rounded-full transform -translate-x-1/2 translate-y-3"
+            aria-hidden="true"
+          ></div>
         </div>
 
         {/* Mobile view - stacked timeline */}
         <div className="lg:hidden mt-10">
           <div className="relative">
             {/* Side timeline line */}
-            <div className="absolute left-7 top-0 h-full w-1 bg-gradient-to-b from-[#00E5FF] via-[#00FF9D] to-[#8C43FF] rounded-full"></div>
+            <div
+              className="absolute left-7 top-0 h-full w-1 bg-gradient-to-b from-[#00E5FF] via-[#00FF9D] to-[#8C43FF] rounded-full"
+              aria-hidden="true"
+            ></div>
 
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative mb-12 pl-16">
-                {/* Timeline node */}
-                <div
-                  className="absolute left-0 w-14 h-14 rounded-full border-4 flex items-center justify-center z-10"
-                  style={{ backgroundColor: '#121212', borderColor: exp.color }}
-                >
-                  <BriefcaseIcon size={18} style={{ color: exp.color }} />
-                </div>
-
-                {/* Content */}
-                <div className="bg-white/5 backdrop-blur-xl p-5 rounded-xl border border-white/10 shadow-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <ol className="list-none" aria-label="Work experience timeline">
+              {experiences.map((exp, index) => (
+                <li key={index} className="relative mb-12 pl-16">
+                  {/* Timeline node */}
                   <div
-                    className="inline-flex items-center rounded-full px-3 py-1 mb-3 text-xs font-medium"
+                    className="absolute left-0 w-14 h-14 rounded-full border-4 flex items-center justify-center z-10"
                     style={{
-                      backgroundColor: `${exp.color}20`,
-                      color: exp.color,
+                      backgroundColor: '#121212',
+                      borderColor: exp.color,
                     }}
+                    aria-hidden="true"
                   >
-                    <CalendarIcon size={12} className="mr-1" />
-                    {translatePeriod(exp.period)}
+                    <BriefcaseIcon size={18} style={{ color: exp.color }} />
                   </div>
 
-                  <h3
-                    className="text-lg font-bold mb-1"
-                    style={{ color: exp.color }}
-                  >
-                    {exp.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="bg-white/5 backdrop-blur-xl p-5 rounded-xl border border-white/10 shadow-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <div
+                      className="inline-flex items-center rounded-full px-3 py-1 mb-3 text-xs font-medium"
+                      style={{
+                        backgroundColor: `${exp.color}20`,
+                        color: exp.color,
+                      }}
+                    >
+                      <CalendarIcon size={12} className="mr-1" />
+                      {translatePeriod(exp.period)}
+                    </div>
 
-                  <div className="flex items-center mb-3">
-                    <MapPinIcon size={14} className="text-gray-400 mr-1.5" />
-                    <span className="text-gray-300 text-sm">{exp.company}</span>
-                  </div>
+                    <h3
+                      className="text-lg font-bold mb-1"
+                      style={{ color: exp.color }}
+                    >
+                      {exp.title}
+                    </h3>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {exp.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-0.5 rounded-full text-xs"
-                        style={{
-                          backgroundColor: `${exp.color}15`,
-                          color: exp.color,
-                        }}
-                      >
-                        {tag}
+                    <div className="flex items-center mb-3">
+                      <MapPinIcon size={14} className="text-gray-400 mr-1.5" />
+                      <span className="text-gray-300 text-sm">
+                        {exp.company}
                       </span>
-                    ))}
-                  </div>
+                    </div>
 
-                  {exp.details.length > 0 && (
-                    <ul className="space-y-2">
-                      {exp.details.map((detail, i) => (
-                        <li key={i} className="flex items-start">
-                          <div
-                            className="p-1 rounded-full mr-2 mt-0.5 flex-shrink-0"
-                            style={{ backgroundColor: `${exp.color}20` }}
-                          >
-                            <CheckIcon size={10} style={{ color: exp.color }} />
-                          </div>
-                          <span className="text-gray-300 text-xs">
-                            {detail}
-                          </span>
-                        </li>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {exp.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 rounded-full text-xs"
+                          style={{
+                            backgroundColor: `${exp.color}15`,
+                            color: exp.color,
+                          }}
+                        >
+                          {tag}
+                        </span>
                       ))}
-                    </ul>
-                  )}
+                    </div>
 
-                  {exp.details.length === 0 &&
-                    exp.period.endsWith('Present') && (
-                      <div className="text-gray-400 italic text-xs">
-                        {t.experience.currentlyWorking}
-                      </div>
+                    {exp.details.length > 0 && (
+                      <ul className="space-y-2">
+                        {exp.details.map((detail, i) => (
+                          <li key={i} className="flex items-start">
+                            <div
+                              className="p-1 rounded-full mr-2 mt-0.5 flex-shrink-0"
+                              style={{ backgroundColor: `${exp.color}20` }}
+                            >
+                              <CheckIcon
+                                size={10}
+                                style={{ color: exp.color }}
+                              />
+                            </div>
+                            <span className="text-gray-300 text-xs">
+                              {detail}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                </div>
-              </div>
-            ))}
+
+                    {exp.details.length === 0 &&
+                      exp.period.endsWith('Present') && (
+                        <div className="text-gray-400 italic text-xs">
+                          {t.experience.currentlyWorking}
+                        </div>
+                      )}
+                  </div>
+                </li>
+              ))}
+            </ol>
 
             {/* Final node */}
-            <div className="absolute bottom-0 left-7 w-4 h-4 bg-[#8C43FF] rounded-full transform -translate-x-1/2 translate-y-2"></div>
+            <div
+              className="absolute bottom-0 left-7 w-4 h-4 bg-[#8C43FF] rounded-full transform -translate-x-1/2 translate-y-2"
+              aria-hidden="true"
+            ></div>
           </div>
         </div>
       </div>

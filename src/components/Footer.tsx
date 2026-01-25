@@ -10,6 +10,7 @@ export function Footer() {
     <footer
       className="relative bg-[#1a1a1a] py-16 px-4 overflow-hidden"
       id="footer"
+      role="contentinfo"
     >
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-[#001a11] to-[#1a1a1a] z-0"></div>

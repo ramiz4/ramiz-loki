@@ -194,8 +194,10 @@ export function Skills() {
                       ? 'bg-[#00ff9d] text-white shadow-lg'
                       : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
+                aria-pressed={activeCategory === category.id}
+                aria-label={`Filter skills by ${category.name}`}
               >
-                <Icon size={16} className={`mr-2`} />
+                <Icon size={16} className={`mr-2`} aria-hidden="true" />
                 {category.name}
               </button>
             );
@@ -203,10 +205,15 @@ export function Skills() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          role="list"
+          aria-label={`${categories.find(c => c.id === activeCategory)?.name} skills`}
+        >
           {filteredSkills.map((skill, index) => (
             <div
               key={index}
+              role="listitem"
               className="group bg-white/5 backdrop-blur-xl p-6 rounded-lg shadow-lg border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl transition-all duration-300"
               style={{
                 animationDelay: `${index * 0.1}s`,
@@ -230,7 +237,7 @@ export function Skills() {
                   <div className="absolute inset-2 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-95 transition-all duration-300">
                     <img
                       src={skill.icon}
-                      alt={skill.name}
+                      alt={`${skill.name} logo`}
                       className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
@@ -242,7 +249,14 @@ export function Skills() {
                 </span>
 
                 {/* Skill level */}
-                <div className="w-full bg-gray-700/30 h-1.5 rounded-full overflow-hidden">
+                <div
+                  className="w-full bg-gray-700/30 h-1.5 rounded-full overflow-hidden"
+                  role="progressbar"
+                  aria-label={`${skill.name} proficiency`}
+                  aria-valuenow={skill.level}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
                   <div
                     className="h-full rounded-full"
                     style={{
@@ -254,7 +268,12 @@ export function Skills() {
                     }}
                   ></div>
                 </div>
-                <span className="text-xs text-gray-400">{skill.level}%</span>
+                <span
+                  className="text-xs text-gray-400"
+                  aria-label={`${skill.level} percent proficiency`}
+                >
+                  {skill.level}%
+                </span>
               </div>
             </div>
           ))}

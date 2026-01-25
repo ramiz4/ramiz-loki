@@ -120,6 +120,11 @@ export function Languages() {
                   <div
                     className="w-full language-progress-bg"
                     style={{ backgroundColor: `${language.color}10` }}
+                    role="progressbar"
+                    aria-label={`${language.name} proficiency`}
+                    aria-valuenow={language.proficiency}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
                   >
                     <div
                       className={`language-progress-bar ${isInView ? 'in-view' : ''}`}
@@ -136,13 +141,19 @@ export function Languages() {
                       </span>
 
                       {/* Animated shine effect */}
-                      <div className="absolute top-0 left-0 w-full h-full shine-effect"></div>
+                      <div
+                        className="absolute top-0 left-0 w-full h-full shine-effect"
+                        aria-hidden="true"
+                      ></div>
                     </div>
                   </div>
                 </div>
 
                 {/* Decorative dots */}
-                <div className="absolute bottom-3 left-3 flex space-x-1">
+                <div
+                  className="absolute bottom-3 left-3 flex space-x-1"
+                  aria-hidden="true"
+                >
                   <div
                     className="language-decoration-dot"
                     style={{ backgroundColor: language.color }}

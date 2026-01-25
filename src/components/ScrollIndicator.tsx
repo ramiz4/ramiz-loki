@@ -20,16 +20,25 @@ export function ScrollIndicator() {
   }, []);
 
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:flex flex-col items-center">
+    <div
+      className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:flex flex-col items-center"
+      aria-label="Page scroll progress indicator"
+    >
       {/* Vertical Progress Bar */}
       <div
         className="h-36 w-1 bg-gray-800 rounded-full relative mx-auto mb-4"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        role="progressbar"
+        aria-label="Page scroll progress"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
       >
         <div
           className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#00ff9d] to-[#00ff9d] rounded-full transition-all duration-300"
           style={{ height: `${scrollProgress}%` }}
+          aria-hidden="true"
         ></div>
 
         {/* Glow effect on hover */}
@@ -41,6 +50,7 @@ export function ScrollIndicator() {
             background:
               'linear-gradient(to top, rgb(0 255 157), rgb(0 204 122))',
           }}
+          aria-hidden="true"
         ></div>
 
         {/* Dot indicator */}
@@ -50,9 +60,11 @@ export function ScrollIndicator() {
             bottom: `${scrollProgress}%`,
             transform: `translateY(50%) translateX(-50%) ${isHovered ? 'scale(1.5)' : 'scale(1)'}`,
           }}
+          aria-hidden="true"
         >
           <div
             className={`absolute inset-0 bg-[#00ff9d] rounded-full animate-ping ${isHovered ? 'opacity-30' : 'opacity-0'}`}
+            aria-hidden="true"
           ></div>
         </div>
       </div>
@@ -61,6 +73,7 @@ export function ScrollIndicator() {
       <div
         className={`text-xs font-light tracking-widest text-gray-400 transition-all duration-500 transform ${isHovered ? 'opacity-100 scale-100' : 'opacity-60 scale-95'}`}
         style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+        aria-hidden="true"
       >
         SCROLL TO EXPLORE
       </div>
