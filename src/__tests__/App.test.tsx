@@ -84,6 +84,26 @@ describe('App', () => {
     expect(screen.getByTestId('hash-router-mock')).toBeInTheDocument();
   });
 
+  test('renders skip-to-main-content link for keyboard navigation', () => {
+    render(<App />);
+
+    // Check that skip link is present
+    const skipLink = screen.getByText('Skip to main content');
+    expect(skipLink).toBeInTheDocument();
+    expect(skipLink).toHaveAttribute('href', '#main-content');
+
+    // Verify it has sr-only class for visual hiding
+    expect(skipLink).toHaveClass('sr-only');
+  });
+
+  test('main element has correct id for skip navigation', () => {
+    const { container } = render(<App />);
+
+    // Check that main element exists with id="main-content"
+    const mainElement = container.querySelector('main#main-content');
+    expect(mainElement).toBeInTheDocument();
+  });
+
   test('uses HashRouter for routing', () => {
     render(<App />);
 

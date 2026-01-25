@@ -217,4 +217,20 @@ describe('Experience', () => {
       )[0],
     ).toBeInTheDocument();
   });
+
+  test('timeline has semantic list structure', () => {
+    const { container } = render(<Experience />);
+
+    // Check desktop timeline has ol with aria-label
+    const desktopTimeline = container.querySelector(
+      'ol[aria-label="Work experience timeline"]',
+    );
+    expect(desktopTimeline).toBeInTheDocument();
+
+    // Check that timeline items are li elements
+    const timelineItems = container.querySelectorAll(
+      'ol[aria-label="Work experience timeline"] > li',
+    );
+    expect(timelineItems.length).toBeGreaterThan(0);
+  });
 });

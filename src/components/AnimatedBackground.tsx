@@ -193,7 +193,8 @@ export function AnimatedBackground({ imagePath }: AnimatedBackgroundProps) {
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={imagePath}
-            alt="Animated background"
+            alt=""
+            role="presentation"
             className="w-full h-full object-cover animate-zoom-breathe"
             style={{
               transformOrigin: 'center',

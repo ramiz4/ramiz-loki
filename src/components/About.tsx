@@ -110,7 +110,10 @@ export function About() {
                 </p>
 
                 {/* Decorative dots */}
-                <div className="absolute bottom-3 left-3 flex space-x-1">
+                <div
+                  className="absolute bottom-3 left-3 flex space-x-1"
+                  aria-hidden="true"
+                >
                   <div
                     className="about-decoration-dot"
                     style={{ backgroundColor: card.color }}

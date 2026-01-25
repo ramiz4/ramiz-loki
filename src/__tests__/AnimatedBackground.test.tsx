@@ -50,19 +50,19 @@ describe('AnimatedBackground', () => {
 
   test('renders with correct props', () => {
     render(<AnimatedBackground imagePath="/test-image.png" />);
-    const image = screen.getByAltText('Animated background');
+    const image = screen.getByRole('presentation');
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute('src', '/test-image.png');
   });
 
   test('applies loading state properly', () => {
     render(<AnimatedBackground imagePath="/test-image.png" />);
-    const container = screen.getByAltText('Animated background').parentElement
-      ?.parentElement;
+    const container =
+      screen.getByRole('presentation').parentElement?.parentElement;
     expect(container).toHaveClass('opacity-0');
 
     // Simulate image load
-    fireEvent.load(screen.getByAltText('Animated background'));
+    fireEvent.load(screen.getByRole('presentation'));
     expect(container).toHaveClass('opacity-100');
   });
 
@@ -214,8 +214,8 @@ describe('AnimatedBackground', () => {
     expect(transformedElements.length).toBeGreaterThan(0);
 
     // Check the main container transform
-    const mainContainer = screen.getByAltText('Animated background')
-      .parentElement?.parentElement;
+    const mainContainer =
+      screen.getByRole('presentation').parentElement?.parentElement;
     expect(mainContainer?.style.transform).toBeDefined();
   });
 
@@ -224,8 +224,8 @@ describe('AnimatedBackground', () => {
     jest.useFakeTimers();
 
     render(<AnimatedBackground imagePath="/test-image.png" />);
-    const container = screen.getByAltText('Animated background').parentElement
-      ?.parentElement;
+    const container =
+      screen.getByRole('presentation').parentElement?.parentElement;
     expect(container).toHaveClass('opacity-0');
 
     // Fast-forward timers to trigger the setTimeout callback

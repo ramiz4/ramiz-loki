@@ -75,7 +75,7 @@ export function Header() {
               <a
                 href="#contact"
                 onClick={e => scrollToSection(e, 'contact')}
-                className="px-8 py-3 bg-[#00ff9d] text-white rounded-md font-medium hover:bg-[#00cc7a] transition-all duration-300 shadow-lg"
+                className="px-8 py-3 bg-[#00ff9d] text-gray-900 rounded-md font-medium hover:bg-[#00cc7a] transition-all duration-300 shadow-lg"
               >
                 {t.header.contactMe}
               </a>
