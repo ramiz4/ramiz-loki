@@ -9,6 +9,9 @@ on:
   # Allow manually triggering the workflow
   workflow_dispatch:
 
+# Prevent this workflow from appearing as a check on PRs
+# by only running on main branch pushes and manual triggers
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -22,6 +25,8 @@ concurrency:
 
 jobs:
   build:
+    # Only run on main branch or manual trigger to prevent appearing as skipped check on PRs
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
