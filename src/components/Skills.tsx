@@ -270,12 +270,7 @@ export function Skills() {
                     }}
                   ></div>
                 </div>
-                <span
-                  className="text-xs text-gray-400"
-                  aria-label={`${skill.level} percent proficiency`}
-                >
-                  {skill.level}%
-                </span>
+                <span className="text-xs text-gray-400">{skill.level}%</span>
               </div>
             </div>
           ))}
