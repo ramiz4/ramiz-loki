@@ -5,21 +5,21 @@
   "type": "module",
   "homepage": "https://ramiz4.github.io/ramiz-loki",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.17.0"
   },
   "packageManager": "pnpm@10.11.0",
   "scripts": {
     "dev": "pnpm vite",
     "build": "pnpm vite build",
     "lint": "pnpm eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "fix-imports": "node fix-imports.js",
-    "format": "node fix-imports.js && pnpm eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && pnpm prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "format": "pnpm eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" && pnpm prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
     "preview": "pnpm vite preview",
     "test": "pnpm cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=test jest",
     "test:watch": "pnpm cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=test jest --watch",
     "test:coverage": "pnpm cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=test jest --coverage",
     "predeploy": "pnpm run build",
-    "deploy": "pnpm gh-pages -d dist"
+    "deploy": "pnpm gh-pages -d dist",
+    "prepare": "husky"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^12.7.0",
@@ -50,16 +50,27 @@
     "eslint-plugin-react-refresh": "^0.4.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "intersection-observer": "^0.12.2",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^16.2.7",
     "postcss": "latest",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
     "ts-jest": "^29.3.2",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{css,md,json}": [
+      "prettier --write"
+    ]
   },
   "pnpm": {
     "overrides": {

@@ -22,49 +22,72 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
-- npm (v9 or higher recommended)
+- Node.js (v20.17 or higher required)
+- pnpm (v10.11.0 - automatically used via packageManager field)
 
 ### Installation
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/ramiz4/ramiz-loki.git
    cd ramiz-loki
    ```
 
 2. Install dependencies
+
    ```bash
-   npm install
+   pnpm install
    ```
 
+   The project will automatically set up Git hooks for pre-commit formatting.
+
 3. (Optional) Configure the base path
-   
+
    The application uses a base path for asset loading. By default, it's set to `/ramiz-loki/` for GitHub Pages deployment.
-   
+
    To customize the base path:
    - Copy `.env.example` to `.env`
    - Modify `VITE_BASE_PATH` in `.env` to your desired path
    - For local development without a base path, use `VITE_BASE_PATH=/`
 
 4. Start the development server
+
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 5. Open your browser and visit `http://localhost:5173`
 
 ## 🛠️ Available Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint to find and fix problems
-- `npm run format` - Format code with ESLint and Prettier
-- `npm run test` - Run all tests
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:coverage` - Run tests with coverage report
-- `npm run deploy` - Deploy to GitHub Pages
+- `pnpm dev` - Start the development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview the production build locally
+- `pnpm lint` - Run ESLint to find and fix problems
+- `pnpm format` - Format code with ESLint and Prettier
+- `pnpm test` - Run all tests
+- `pnpm test:watch` - Run tests in watch mode
+- `pnpm test:coverage` - Run tests with coverage report
+- `pnpm deploy` - Deploy to GitHub Pages
+
+## 🎨 Code Quality & Formatting
+
+This project uses industry-standard tooling for code quality:
+
+- **ESLint**: Enforces code quality rules and best practices
+- **Prettier**: Ensures consistent code formatting
+- **Husky**: Manages Git hooks
+- **lint-staged**: Runs linting and formatting on staged files before commit
+
+### Pre-commit Hooks
+
+The project automatically formats code before each commit using:
+
+1. **ESLint** with auto-fix for code quality and import organization
+2. **Prettier** for consistent formatting across all file types
+
+This ensures all committed code follows the project's style guidelines. The hooks are automatically installed when you run `pnpm install`.
 
 ## 💻 Technologies Used
 
@@ -80,7 +103,7 @@ A modern, responsive portfolio website for Ramiz Loki, Senior Full-Stack Softwar
 The project includes comprehensive test coverage for all components using Jest and React Testing Library. To run tests:
 
 ```bash
-npm run test
+pnpm test
 ```
 
 ## 📝 Project Structure
