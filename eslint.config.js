@@ -8,6 +8,76 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+// Common configuration shared between test and source files
+const commonConfig = {
+  languageOptions: {
+    ecmaVersion: 2020,
+    parser: tseslint.parser,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+    },
+  },
+  plugins: {
+    'react-hooks': reactHooks,
+    'react-refresh': reactRefresh,
+    import: importPlugin,
+    'unused-imports': unusedImports,
+    prettier: prettier,
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+    react: {
+      version: 'detect',
+    },
+  },
+  rules: {
+    ...reactHooks.configs.recommended.rules,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+    'import/default': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: 'import', next: '*' },
+      { blankLine: 'any', prev: 'import', next: 'import' },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+  },
+};
+
 export default tseslint.config(
   {
     ignores: ['dist/**', 'node_modules/**', '.eslintrc.cjs'],
@@ -23,156 +93,38 @@ export default tseslint.config(
       '**/*.spec.{js,jsx,ts,tsx}',
       '**/mocks/**/*.js',
     ],
+    ...commonConfig,
     languageOptions: {
-      ecmaVersion: 2020,
+      ...commonConfig.languageOptions,
       globals: {
         ...globals.browser,
         ...globals.es2020,
         ...globals.jest,
         ...globals.node,
       },
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      import: importPlugin,
-      'unused-imports': unusedImports,
-      prettier: prettier,
-    },
-    settings: {
-      'import/resolver': {
-        typescript: {},
-      },
-      react: {
-        version: 'detect',
-      },
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      ...commonConfig.rules,
       'react-refresh/only-export-components': 'off',
-      'prettier/prettier': [
-        'error',
-        {
-          endOfLine: 'auto',
-        },
-      ],
-      'import/default': 'off',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
-      ],
-      'padding-line-between-statements': [
-        'error',
-        { blankLine: 'always', prev: 'import', next: '*' },
-        { blankLine: 'any', prev: 'import', next: 'import' },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
     },
   },
   // Configuration for regular source files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: ['**/__tests__/**', '**/*.test.*', '**/*.spec.*', '**/mocks/**'],
+    ...commonConfig,
     languageOptions: {
-      ecmaVersion: 2020,
+      ...commonConfig.languageOptions,
       globals: {
         ...globals.browser,
         ...globals.es2020,
       },
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      import: importPlugin,
-      'unused-imports': unusedImports,
-      prettier: prettier,
-    },
-    settings: {
-      'import/resolver': {
-        typescript: {},
-      },
-      react: {
-        version: 'detect',
-      },
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      ...commonConfig.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-      ],
-      'prettier/prettier': [
-        'error',
-        {
-          endOfLine: 'auto',
-        },
-      ],
-      'import/default': 'off',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
-      ],
-      'padding-line-between-statements': [
-        'error',
-        { blankLine: 'always', prev: 'import', next: '*' },
-        { blankLine: 'any', prev: 'import', next: 'import' },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
       ],
     },
   },
