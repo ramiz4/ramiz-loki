@@ -191,7 +191,7 @@ export function Skills() {
                 className={`relative overflow-hidden flex items-center px-6 py-3 rounded-md font-medium text-sm transition-all duration-300
                   ${
                     activeCategory === category.id
-                      ? 'bg-[#00ff9d] text-white shadow-lg'
+                      ? 'bg-[#00ff9d] text-gray-900 shadow-lg'
                       : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
                 aria-current={
