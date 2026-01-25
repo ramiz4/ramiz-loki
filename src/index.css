@@ -9,6 +9,8 @@
   --animate-zoom-breathe: cinematicJourney 40s ease-in-out infinite alternate;
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float-slow: float-slow ease-in-out infinite;
 
   /* Custom keyframes */
   @keyframes fadeIn {
@@ -74,6 +76,45 @@
     100% {
       transform: scale(1.05) translate(3%, 0%) rotate(0.3deg);
       filter: brightness(1.02) saturate(1.05);
+    }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+      transform: translateY(-5px) translateX(10px);
+    }
+    75% {
+      transform: translateY(10px) translateX(-5px);
+    }
+  }
+
+  @keyframes verticalLine {
+    0% {
+      opacity: 0;
+      transform: scaleY(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scaleY(0.8);
     }
   }
 
@@ -150,85 +191,4 @@ body {
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
-}
-
-@keyframes pulse-subtle {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Animation for floating particles */
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-10px) translateX(5px);
-  }
-  50% {
-    transform: translateY(-5px) translateX(10px);
-  }
-  75% {
-    transform: translateY(10px) translateX(-5px);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow ease-in-out infinite;
-}
-
-/* Animation for a slow pulse effect */
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-/* Animation for smooth zoom breathing effect */
-@keyframes zoom-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.animate-zoom-breathe {
-  animation: zoom-breathe 15s ease-in-out infinite;
-}
-
-/* Animation for vertical line movement */
-@keyframes verticalLine {
-  0% {
-    opacity: 0;
-    transform: scaleY(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scaleY(0.8);
-  }
 }
