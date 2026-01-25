@@ -4,7 +4,7 @@ describe('navigationUtils', () => {
   describe('scrollToSection', () => {
     let preventDefaultMock: jest.Mock;
     let setIsMenuOpenMock: jest.Mock;
-    let originalWindowLocation: Location;
+    let originalHash: string;
 
     beforeEach(() => {
       // Mock preventDefault
@@ -12,21 +12,21 @@ describe('navigationUtils', () => {
 
       // Mock setIsMenuOpen
       setIsMenuOpenMock = jest.fn();
-      // Save original window.location and mock it
-      originalWindowLocation = window.location;
-      // Use Object.defineProperty to mock window.location
-      Object.defineProperty(window, 'location', {
-        writable: true,
-        value: { ...originalWindowLocation, hash: '' },
-      });
+      // Save original hash
+      originalHash = window.location.hash;
+      // Clear the hash for each test
+      window.history.pushState(null, '', window.location.pathname);
     });
 
     afterEach(() => {
-      // Restore original window.location
-      Object.defineProperty(window, 'location', {
-        writable: true,
-        value: originalWindowLocation,
-      });
+      // Restore original hash if it existed
+      if (originalHash) {
+        window.history.pushState(
+          null,
+          '',
+          window.location.pathname + originalHash,
+        );
+      }
     });
 
     test('prevents default event behavior', () => {
@@ -52,7 +52,7 @@ describe('navigationUtils', () => {
       scrollToSection(mockEvent, 'test-section');
 
       // Assert
-      expect(window.location.hash).toBe('test-section');
+      expect(window.location.hash).toBe('#test-section');
     });
 
     test('closes mobile menu when it is open', () => {
@@ -92,7 +92,7 @@ describe('navigationUtils', () => {
       scrollToSection(mockEvent, 'test-section', true);
 
       // Assert - function runs without error even though setIsMenuOpen is undefined
-      expect(window.location.hash).toBe('test-section');
+      expect(window.location.hash).toBe('#test-section');
     });
   });
 });
