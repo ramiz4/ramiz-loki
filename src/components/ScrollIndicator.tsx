@@ -38,7 +38,8 @@ export function ScrollIndicator() {
           style={{
             height: `${scrollProgress}%`,
             bottom: 0,
-            background: 'linear-gradient(to top, rgb(0 255 157), rgb(0 204 122))',
+            background:
+              'linear-gradient(to top, rgb(0 255 157), rgb(0 204 122))',
           }}
         ></div>
 
